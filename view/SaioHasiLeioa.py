@@ -12,6 +12,18 @@ class SaioHasiLeioa(object):
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
 
+        Label(text="Sartu zure erabiltzaile eta pasahitza jolasten hasteko: ").pack()
+
+        Label(text="Erabiltzailea: ").pack()
+
+        entry = tk.Entry()
+        entry.pack()
+
+        Label(text="Pasahitza: ").pack()
+
+        entry2 = tk.Entry(show="*")
+        entry2.pack()
+
         buttonSartu = tk.Button(self.window, text="SARTU", command=self.clickEgin1)
         buttonSartu.pack()
 

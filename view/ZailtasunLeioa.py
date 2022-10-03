@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import *
-
+import view.MenuLeioa as ml
 class ZailtasunLeioa(object):
 
     def __init__(self):
@@ -22,3 +22,12 @@ class ZailtasunLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
+        ml.MenuLeioa()
+
+    def clickEgin2(self):
+        self.window.destroy()
+        ml.MenuLeioa()
+
+    def clickEgin3(self):
+        self.window.destroy()
+        ml.MenuLeioa()

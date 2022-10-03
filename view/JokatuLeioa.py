@@ -11,6 +11,7 @@ class JokatuLeioa(object):
 		self.window = tk.Tk()
 		self.window.geometry('220x460')
 		self.window.title("Tetris jokoa")
+		self.window.config(bg="black")
 
 		
 

@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import *
 from view.ErregistroLeioa import ErregistroLeioa
 from view.SaioHasiLeioa import SaioHasiLeioa
 
