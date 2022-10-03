@@ -1,5 +1,7 @@
 import tkinter as tk
-from tkinter import *
+import view.JokatuLeioa as jl
+import view.ZailtasunLeioa as zl
+import view.DatuakAldatuLeioa as dal
 
 class MenuLeioa(object):
 
@@ -22,9 +24,12 @@ class MenuLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
+        jl.JokatuLeioa()
 
     def clickEgin2(self):
         self.window.destroy()
+        zl.ZailtasunLeioa()
 
     def clickEgin3(self):
         self.window.destroy()
+        dal.DatuakAldatuLeioa()
