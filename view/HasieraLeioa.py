@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import *
-from view.ErregistroLeioa import ErregistroLeioa
+import view.ErregistroLeioa as el
 from view.SaioHasiLeioa import SaioHasiLeioa
 
 class HasieraLeioa(object):
@@ -29,7 +29,7 @@ class HasieraLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
-        ErregistroLeioa()
+        el.ErregistroLeioa()
 
     def clickEgin2(self):
         self.window.destroy()
