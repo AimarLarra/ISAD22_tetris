@@ -12,11 +12,15 @@ class HasieraLeioa(object):
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
 
+        tk.Label(text="Saioa hasi jolasten hasteko",bg="black",fg="white").place(x=17, rely=0.4)
+
         buttonSaioaHasi = tk.Button(self.window, text="SAIOA HASI", command=self.clickEgin2)
-        buttonSaioaHasi.place(x=20, rely=0.6, width= 180)
+        buttonSaioaHasi.place(x=20, rely=0.45, width= 180)
+
+        tk.Label(text="Konturik ez baduzu erregistratu", bg="black", fg="white").place(x=17, rely=0.55)
 
         buttonErregistro = tk.Button(self.window, text="ERREGISTRATU", command=self.clickEgin1)
-        buttonErregistro.place(x=20, rely=0.4,width=180)
+        buttonErregistro.place(x=20, rely=0.6,width=180)
 
         egileak = tk.Label(text="Egileak:  Aimar Larrazabal",bg="black",fg="white")
         egileak.place(relx=0.05, rely=0.85)

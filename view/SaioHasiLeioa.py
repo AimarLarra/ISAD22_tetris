@@ -14,19 +14,20 @@ class SaioHasiLeioa(object):
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
 
-        Label(text="Sartu zure erabiltzaile eta pasahitza jolasten hasteko: ").pack()
+        Label(text="Sartu zure erabiltzaile eta",bg="black",fg="white").place(x=20,rely=0.2,width=180)
+        Label(text="pasahitza jolasten hasteko:",bg="black",fg="white").place(x=20,rely=0.25,width=180)
 
-        Label(text="Erabiltzailea: ").pack()
+        Label(text="Erabiltzailea: ",bg="black",fg="white").place(x=20,rely=0.4,width=180)
 
         erab = StringVar()
-        entry = Entry(self.window, width=30, textvariable=erab)
-        entry.pack()
+        entry = Entry(self.window, textvariable=erab)
+        entry.place(x=20,rely=0.45,width=180)
 
-        Label(text="Pasahitza: ").pack()
+        Label(text="Pasahitza: ",bg="black",fg="white").place(x=20,rely=0.5,width=180)
 
         pasa = StringVar()
-        entry2 = Entry(self.window, width=30, show="*", textvariable=pasa)
-        entry2.pack()
+        entry2 = Entry(self.window, show="*", textvariable=pasa)
+        entry2.place(x=20,rely=0.55,width=180)
 
         def popupmsg(msg):
             popup = tk.Tk()
@@ -60,7 +61,7 @@ class SaioHasiLeioa(object):
 
 
         buttonSartu = tk.Button(self.window, text="SARTU", command=clickEgin1)
-        buttonSartu.pack()
+        buttonSartu.place(x=20,rely=0.6,width=180)
 
         def clickEgin2():
             if erab.get():
@@ -76,13 +77,13 @@ class SaioHasiLeioa(object):
                 popupmsg("Sartu erabiltzailea!")
 
         buttonPasahitzaBerreskuratu = tk.Button(self.window, text="PASAHITZA BERRESKURATU", command=clickEgin2)
-        buttonPasahitzaBerreskuratu.pack()
+        buttonPasahitzaBerreskuratu.place(x=20,rely=0.7,width=180)
 
         def clickEgin3():
             self.window.destroy()
             hl.HasieraLeioa()
 
         buttonItzuli = tk.Button(self.window, text="ITZULI", command=clickEgin3)
-        buttonItzuli.pack()
+        buttonItzuli.place(x=10,y=420,height=30,width=50)
 
         self.window.mainloop()

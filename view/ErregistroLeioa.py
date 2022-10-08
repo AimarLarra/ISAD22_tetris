@@ -14,19 +14,20 @@ class ErregistroLeioa(object):
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
 
-        Label(text = "Sartu erabiltzaile eta pasahitza bat kontu berri bat sortzeko: ").pack()
+        Label(text="Sartu erabiltzaile izena eta",bg="black",fg="white").place(x=20,rely=0.2,width=180)
+        Label(text="pasahitza kontu bat sortzeko:", bg="black", fg="white").place(x=20, rely=0.25,width=180)
 
-        Label(text = "Erabiltzailea: ").pack()
+        Label(text = "Erabiltzailea: ",bg="black",fg="white").place(x=20,rely=0.4,width=180)
 
         erab = StringVar()
-        entry = Entry(self.window, width=30, textvariable=erab)
-        entry.pack()
+        entry = Entry(self.window, textvariable=erab)
+        entry.place(x=20,rely=0.45,width=180)
 
-        Label(text = "Pasahitza: ").pack()
+        Label(text = "Pasahitza: ", bg="black", fg="white").place(x=20,rely=0.50,width=180)
 
         pasa=StringVar()
-        entry2 = Entry(self.window, width=30, show="*", textvariable=pasa)
-        entry2.pack()
+        entry2 = Entry(self.window, show="*", textvariable=pasa)
+        entry2.place(x=20,rely=0.55,width=180)
 
         def popupmsg(msg):
             popup = tk.Tk()
@@ -62,8 +63,16 @@ class ErregistroLeioa(object):
             else:
                 popupmsg("Erabiltzailea sartu!")
 
+        def clickEgin3():
+            self.window.destroy()
+            hl.HasieraLeioa()
 
-        buttonSaioaHasi = tk.Button(self.window, text="ERREGISTRATU", command=clickEgin)
-        buttonSaioaHasi.pack()
+        buttonErregistratu = tk.Button(self.window, text="ERREGISTRATU", command=clickEgin)
+        buttonErregistratu.place(x=20,rely=0.60,width=180)
+
+        buttonItzuli = tk.Button(self.window, text="ITZULI", command=clickEgin3)
+        buttonItzuli.place(x=10,y=420,height=30,width=50)
+
+
 
         self.window.mainloop()
