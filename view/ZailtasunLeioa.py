@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import *
 import view.MenuLeioa as ml
 class ZailtasunLeioa(object):
 
@@ -9,7 +8,6 @@ class ZailtasunLeioa(object):
         self.window.geometry('220x460')
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
-
 
         buttonErraza = tk.Button(self.window, text="ERRAZA", command=self.clickEgin1)
         buttonErraza.pack()
@@ -23,6 +21,7 @@ class ZailtasunLeioa(object):
     def clickEgin1(self):
         self.window.destroy()
         ml.MenuLeioa()
+
 
     def clickEgin2(self):
         self.window.destroy()
