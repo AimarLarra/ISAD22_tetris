@@ -42,12 +42,14 @@ class ErregistroLeioa(object):
 
         def clickegin():
             db = datuBasea()
-            emaitza = db.erabiltzaileGehitu(entry.get(), entry2.get())
-            if emaitza is False:
-                popupmsg("Erabiltzaile hori existitzen da, beste bat sartu!")
-
-            self.window.destroy()
-            hL.HasieraLeioa()
+            if entry.get() and entry2.get():
+                emaitza = db.erabiltzaileGehitu(entry.get(), entry2.get())
+                if emaitza is False:
+                    popupmsg("Erabiltzaile hori existitzen da, beste bat sartu!")
+                self.window.destroy()
+                hL.HasieraLeioa()
+            else:
+                popupmsg("Datuak ondo sartu!")
 
         def clickegin3():
             self.window.destroy()
