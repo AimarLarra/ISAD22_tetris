@@ -42,4 +42,16 @@ class datuBasea:
         con.commit()
         con.close()
         return datuak
-
+    
+    def erabiltzailearenDatuakEguneratu(self, erab, pasa, erabBerria, pasaBerria):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        try:
+            res = cur.execute("UPDATE erregistroa SET erabiltzailea = '" + erabBerria + "', pasahitza = '" + pasaBerria + "' WHERE erabiltzailea = '" + erab + "' AND pasahitza = '" + pasa + "'")
+            res.fetchall()
+            con.commit()
+            con.close()
+            return True
+        except sqlite3.IntegrityError:
+            con.close()
+            return False
