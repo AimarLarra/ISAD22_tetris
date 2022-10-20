@@ -42,6 +42,7 @@ class SaioHasiLeioa(object):
 
         def clickEgin1():
             db = datuBasea()
+            db.taulaSortu()
             if entry.get() and entry2.get():
                 emaitza = db.erabiltzaileaKonprobatu(entry.get(), entry2.get())
                 if emaitza:
@@ -57,6 +58,7 @@ class SaioHasiLeioa(object):
 
         def clickEgin2():
             db = datuBasea()
+            db.taulaSortu()
             if entry.get():
                 emaitza = db.erabiltzailearenPasahitzaInprimatu(entry.get())
                 if emaitza:

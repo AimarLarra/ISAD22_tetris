@@ -29,14 +29,14 @@ class DatuakAldatuLeioa(object):
         Label(text="Erabiltzaile berria: ").pack()
 
         erab2 = StringVar()
-        entry = Entry(self.window, width=30, textvariable=erab2)
-        entry.pack()
+        entry3 = Entry(self.window, width=30, textvariable=erab2)
+        entry3.pack()
 
         Label(text="Pasahitza berria: ").pack()
 
         pasa2 = StringVar()
-        entry2 = Entry(self.window, width=30, show="*", textvariable=pasa2)
-        entry2.pack()
+        entry4 = Entry(self.window, width=30, show="*", textvariable=pasa2)
+        entry4.pack()
 
         def popupmsg(msg):
             popup = tk.Tk()

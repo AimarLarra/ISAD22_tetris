@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d9505f1-d0df-45bc-8db6-b4eb4e9859a2" name="Changes" comment="Datu basea sartuta, erregistro leioa ondo, besteak amaitu gabe.">
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/DatuBasea.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/DatuBasea.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/DatuakAldatuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/DatuakAldatuLeioa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/ErregistroLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/ErregistroLeioa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/SaioHasiLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/SaioHasiLeioa.py" afterDir="false" />
     </list>

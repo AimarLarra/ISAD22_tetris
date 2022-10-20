@@ -42,6 +42,7 @@ class ErregistroLeioa(object):
 
         def clickegin():
             db = datuBasea()
+            db.taulaSortu()
             if entry.get() and entry2.get():
                 emaitza = db.erabiltzaileGehitu(entry.get(), entry2.get())
                 if emaitza is False:
