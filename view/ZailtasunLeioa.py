@@ -1,5 +1,5 @@
 import tkinter as tk
-import view.MenuLeioa as ml
+import view.JokatuLeioa as jl
 class ZailtasunLeioa(object):
 
     def __init__(self):
@@ -20,13 +20,13 @@ class ZailtasunLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
-        ml.MenuLeioa()
+        jl.JokatuLeioa(0)
 
 
     def clickEgin2(self):
         self.window.destroy()
-        ml.MenuLeioa()
+        jl.JokatuLeioa(1)
 
     def clickEgin3(self):
         self.window.destroy()
-        ml.MenuLeioa()
+        jl.JokatuLeioa(2)

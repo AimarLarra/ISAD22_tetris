@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d9505f1-d0df-45bc-8db6-b4eb4e9859a2" name="Changes" comment="Datu basea sartuta, erregistro leioa ondo, besteak amaitu gabe.">
-      <change beforePath="$PROJECT_DIR$/view/DatuakAldatuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/DatuakAldatuLeioa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/ErregistroLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/ErregistroLeioa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/SaioHasiLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/SaioHasiLeioa.py" afterDir="false" />
+    <list default="true" id="1d9505f1-d0df-45bc-8db6-b4eb4e9859a2" name="Changes" comment="Datu basea amaituta, zailtasuna falta">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/JokatuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/JokatuLeioa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/MenuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/MenuLeioa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/ZailtasunLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/ZailtasunLeioa.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +66,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666192087060</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Datu basea amaituta, zailtasuna falta">
+      <created>1666284988039</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666284988039</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -83,6 +91,7 @@
     <MESSAGE value="Erregistroa, saioa eta ia datuak aldatu amaituta" />
     <MESSAGE value="Erregistroa, saioa eta datuak aldatu amaituta" />
     <MESSAGE value="Datu basea sartuta, erregistro leioa ondo, besteak amaitu gabe." />
-    <option name="LAST_COMMIT_MESSAGE" value="Datu basea sartuta, erregistro leioa ondo, besteak amaitu gabe." />
+    <MESSAGE value="Datu basea amaituta, zailtasuna falta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Datu basea amaituta, zailtasuna falta" />
   </component>
 </project>

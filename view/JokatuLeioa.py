@@ -3,17 +3,16 @@ import tkinter as tk
 from model.Tableroa import Tableroa
 from model.Piezak import *
 
+
 class JokatuLeioa(object):
 	"""docstring for JokatuLeioa"""
 	
-	def __init__(self):
+	def __init__(self, pZailtasuna):
 		super(JokatuLeioa, self).__init__()
 		self.window = tk.Tk()
 		self.window.geometry('220x460')
 		self.window.title("Tetris jokoa")
 		self.window.config(bg="black")
-
-		
 
 		button = tk.Button(self.window, text="Partida hasi")
 		button.pack()
@@ -24,7 +23,7 @@ class JokatuLeioa(object):
 		puntuazioalabel = tk.Label(self.window, textvariable=puntuazioa)
 		puntuazioalabel.pack()
 
-		canvas = TableroaPanela(master=self.window, puntuazioalabel = puntuazioa)
+		canvas = TableroaPanela(master=self.window, puntuazioalabel=puntuazioa, zailtasuna=pZailtasuna)
 		button.configure(command=canvas.jolastu)
 		canvas.pack()
 		self.window.bind("<Up>", canvas.joku_kontrola)
@@ -34,15 +33,18 @@ class JokatuLeioa(object):
 
 		self.window.mainloop()
 
+
 class TableroaPanela(tk.Frame):
-	def __init__(self, tamaina=(10,20), gelazka_tamaina=20,puntuazioalabel=None, master=None):
+
+	def __init__(self, tamaina=(10, 20), gelazka_tamaina=20, puntuazioalabel=None, master=None, zailtasuna=None):
 		tk.Frame.__init__(self, master)
 		self.puntuazio_panela = puntuazioalabel
 		self.tamaina = tamaina
 		self.gelazka_tamaina = gelazka_tamaina
+		self.zailtasuna = zailtasuna
 
 		self.canvas = tk.Canvas(
-			width=self.tamaina[0]  * self.gelazka_tamaina+1,
+			width=self.tamaina[0] * self.gelazka_tamaina+1,
 			height=self.tamaina[1] * self.gelazka_tamaina+1,
 			bg='#eee', borderwidth=0, highlightthickness=0
 		)
@@ -53,7 +55,7 @@ class TableroaPanela(tk.Frame):
 		self.tableroa_ezabatu()
 
 
-	def marratu_gelazka(self, x,y,color):
+	def marratu_gelazka(self, x, y, color):
 		self.canvas.create_rectangle(x*self.gelazka_tamaina, y*self.gelazka_tamaina,
 									(x+1)*self.gelazka_tamaina, (y+1)*self.gelazka_tamaina, fill=color)
 
@@ -66,12 +68,12 @@ class TableroaPanela(tk.Frame):
 		for i in range(self.tab.tamaina[1]):
 			for j in range(self.tab.tamaina[0]):
 				if self.tab.tab[i][j]:
-					self.marratu_gelazka(j,i,self.tab.tab[i][j])
+					self.marratu_gelazka(j, i, self.tab.tab[i][j])
 		if self.tab.pieza:
 			for i in range(4):
 				x = self.tab.posizioa[0] + self.tab.pieza.get_x(i)
 				y = self.tab.posizioa[1] + self.tab.pieza.get_y(i)
-				self.marratu_gelazka(y,x,self.tab.pieza.get_kolorea())
+				self.marratu_gelazka(y, x, self.tab.pieza.get_kolorea())
 		self.puntuazioa_eguneratu()
 
 
@@ -88,7 +90,12 @@ class TableroaPanela(tk.Frame):
 				print("GAMEOVER")
 				self.tab.hasieratu_tableroa()
 				return
-		self.after(400, self.pausu_bat)
+		if self.zailtasuna == 0:
+			self.jokatzen = self.after(400, self.pausu_bat)
+		elif self.zailtasuna == 1:
+			self.jokatzen = self.after(200, self.pausu_bat)
+		else:
+			self.jokatzen = self.after(100, self.pausu_bat)
 		self.marraztu_tableroa()
 
 	def puntuazioa_eguneratu(self):
@@ -119,5 +126,14 @@ class TableroaPanela(tk.Frame):
 		pieza_posibleak = [Laukia, Zutabea, Lforma, LformaAlderantzizko, Zforma, ZformaAlderantzizko, Tforma]
 		self.tab.sartu_pieza(random.choice(pieza_posibleak)())
 		self.marraztu_tableroa()
-		self.jokatzen = self.after(400, self.pausu_bat)
+		if self.zailtasuna == 0:
+			self.jokatzen = self.after(400, self.pausu_bat)
+			print("Zailtasun: Erraza")
+		elif self.zailtasuna == 1:
+			self.jokatzen = self.after(200, self.pausu_bat)
+			print("Zailtasun: Ertaina")
+		else:
+			self.jokatzen = self.after(100, self.pausu_bat)
+			print("Zailtasun: Zaila")
+
 		

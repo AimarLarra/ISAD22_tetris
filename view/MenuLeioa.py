@@ -24,7 +24,7 @@ class MenuLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
-        jl.JokatuLeioa()
+        jl.JokatuLeioa(1)
 
     def clickEgin2(self):
         self.window.destroy()
