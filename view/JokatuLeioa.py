@@ -2,6 +2,7 @@ import random
 import tkinter as tk
 from model.Tableroa import Tableroa
 from model.Piezak import *
+from PIL import Image,ImageTk
 
 
 class JokatuLeioa(object):
@@ -10,9 +11,19 @@ class JokatuLeioa(object):
 	def __init__(self, pZailtasuna):
 		super(JokatuLeioa, self).__init__()
 		self.window = tk.Tk()
-		self.window.geometry('220x460')
+		self.window.geometry('260x520')
 		self.window.title("Tetris jokoa")
 		self.window.config(bg="black")
+
+		frame = tk.Frame(self.window, width=1, height=1, bg="black")
+		frame.place(x=1, rely=0.01)
+
+		img = Image.open("Irudiak/tetris-logo.png")
+		resize_img = img.resize((60, 40))
+		img = ImageTk.PhotoImage(resize_img)
+
+		label = tk.Label(frame, image=img, fg="black", bg="black", width=80, height=60)
+		label.pack()
 
 		button = tk.Button(self.window, text="Partida hasi")
 		button.pack()
@@ -36,12 +47,20 @@ class JokatuLeioa(object):
 
 class TableroaPanela(tk.Frame):
 
-	def __init__(self, tamaina=(10, 20), gelazka_tamaina=20, puntuazioalabel=None, master=None, zailtasuna=None):
+	def __init__(self, tamaina=None, gelazka_tamaina=20, puntuazioalabel=None, master=None, zailtasuna=None):
 		tk.Frame.__init__(self, master)
 		self.puntuazio_panela = puntuazioalabel
-		self.tamaina = tamaina
+		if zailtasuna==0:
+			self.tamaina =(11,22)
+		elif zailtasuna==1:
+			self.tamaina = (10,20)
+		elif zailtasuna==2:
+			self.tamaina=(9,18)
+
 		self.gelazka_tamaina = gelazka_tamaina
 		self.zailtasuna = zailtasuna
+
+
 
 		self.canvas = tk.Canvas(
 			width=self.tamaina[0] * self.gelazka_tamaina+1,
@@ -50,7 +69,7 @@ class TableroaPanela(tk.Frame):
 		)
 		self.canvas.pack(expand=tk.YES, fill=None)
 
-		self.tab = Tableroa()
+		self.tab = Tableroa(zailtasuna)
 		self.jokatzen = None
 		self.tableroa_ezabatu()
 

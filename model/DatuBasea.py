@@ -25,6 +25,19 @@ class datuBasea:
             con.close()
             return False
 
+    def erabiltzaileEzabatu(self, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        try:
+            res = cur.execute("DELETE FROM erregistroa WHERE erabiltzailea = '" + erabiltzailea + "'")
+            res.fetchall()
+            con.commit()
+            con.close()
+            return True
+        except sqlite3.IntegrityError:
+            con.close()
+            return False
+
     def erabiltzailearenPasahitzaInprimatu(self, erabiltzailea):
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
@@ -38,6 +51,15 @@ class datuBasea:
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
         cur.execute("SELECT * FROM erregistroa WHERE erabiltzailea = '" + erabiltzailea + "' AND pasahitza = '" + pasahitza + "'")
+        datuak = cur.fetchall()
+        con.commit()
+        con.close()
+        return datuak
+
+    def erabiltzaileaKonprobatu2(self, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        cur.execute("SELECT * FROM erregistroa WHERE erabiltzailea = '" + erabiltzailea + "'")
         datuak = cur.fetchall()
         con.commit()
         con.close()

@@ -1,8 +1,13 @@
 from model import Piezak
 
 class Tableroa:
-	def __init__(self, tamaina=(10,20)):
-		self.tamaina = tamaina
+	def __init__(self, zailtasuna):
+		if zailtasuna==0:
+			self.tamaina =(11,22)
+		elif zailtasuna==1:
+			self.tamaina = (10,20)
+		elif zailtasuna==2:
+			self.tamaina=(9,18)
 		self.hasieratu_tableroa()
 
 	def hasieratu_tableroa(self):

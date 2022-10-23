@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 from model.DatuBasea import datuBasea
-
+from PIL import Image,ImageTk
 import view.HasieraLeioa as hL
 from view.MenuLeioa import MenuLeioa
 
@@ -15,6 +15,16 @@ class SaioHasiLeioa(object):
         self.window.geometry('220x460')
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
+
+        frame = tk.Frame(self.window, width=1, height=1, bg="black")
+        frame.place(x=1, rely=0.01)
+
+        img = Image.open("Irudiak/tetris-logo.png")
+        resize_img = img.resize((60, 40))
+        img = ImageTk.PhotoImage(resize_img)
+
+        label = tk.Label(frame, image=img, fg="black", bg="black", width=80, height=60)
+        label.pack()
 
         Label(text="Sartu zure erabiltzaile eta", bg="black", fg="white").place(x=20, rely=0.2, width=180)
         Label(text="pasahitza jolasten hasteko:", bg="black", fg="white").place(x=20, rely=0.25, width=180)
@@ -46,8 +56,11 @@ class SaioHasiLeioa(object):
             if entry.get() and entry2.get():
                 emaitza = db.erabiltzaileaKonprobatu(entry.get(), entry2.get())
                 if emaitza:
+                    if entry.get()=="admin":
+                        self.window.destroy()
+                        MenuLeioa(1)
                     self.window.destroy()
-                    MenuLeioa()
+                    MenuLeioa(0)
                 else:
                     popupmsg("Erabiltzaile hori ez da existitzen edo pasahitza okerra da!")
             else:

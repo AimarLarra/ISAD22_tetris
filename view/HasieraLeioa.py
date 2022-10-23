@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 import view.ErregistroLeioa as el
 from view.SaioHasiLeioa import SaioHasiLeioa
+from PIL import Image,ImageTk
 
 class HasieraLeioa(object):
 
@@ -11,6 +12,16 @@ class HasieraLeioa(object):
         self.window.geometry('220x460')
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
+
+        frame = tk.Frame(self.window, width=1, height=20, bg="black")
+        frame.place(x=12, rely=0.10)
+
+        img = Image.open("Irudiak/tetris-logo.png")
+        resize_img = img.resize((140, 100))
+        img = ImageTk.PhotoImage(resize_img)
+
+        label = tk.Label(frame, image=img, fg="black", bg="black", width=200, height=100)
+        label.pack()
 
         tk.Label(text="Saioa hasi jolasten hasteko",bg="black",fg="white").place(x=17, rely=0.4)
 

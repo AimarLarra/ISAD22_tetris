@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 from model.DatuBasea import datuBasea
-
+from PIL import Image,ImageTk
 import view.HasieraLeioa as hL
 
 
@@ -14,6 +14,16 @@ class ErregistroLeioa(object):
         self.window.geometry('220x460')
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
+
+        frame = tk.Frame(self.window, width=1, height=1, bg="black")
+        frame.place(x=1, rely=0.01)
+
+        img = Image.open("Irudiak/tetris-logo.png")
+        resize_img = img.resize((60, 40))
+        img = ImageTk.PhotoImage(resize_img)
+
+        label = tk.Label(frame, image=img, fg="black", bg="black", width=80, height=60)
+        label.pack()
 
         Label(text="Sartu erabiltzaile izena eta", bg="black", fg="white").place(x=20, rely=0.2, width=180)
         Label(text="pasahitza kontu bat sortzeko:", bg="black", fg="white").place(x=20, rely=0.25, width=180)
