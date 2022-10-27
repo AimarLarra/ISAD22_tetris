@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 from model.DatuBasea import datuBasea
-from PIL import Image,ImageTk
+from PIL import Image, ImageTk
 import view.HasieraLeioa as hL
 from view.MenuLeioa import MenuLeioa
 
@@ -56,7 +56,7 @@ class SaioHasiLeioa(object):
             if entry.get() and entry2.get():
                 emaitza = db.erabiltzaileaKonprobatu(entry.get(), entry2.get())
                 if emaitza:
-                    if entry.get()=="admin":
+                    if entry.get() == "admin":
                         self.window.destroy()
                         MenuLeioa(1)
                     self.window.destroy()

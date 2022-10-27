@@ -8,7 +8,7 @@ from PIL import ImageTk,Image
 
 class MenuLeioa(object):
 
-    def __init__(self,admin):
+    def __init__(self, admin):
         super(MenuLeioa, self).__init__()
         self.window = tk.Tk()
         self.window.geometry('220x460')
@@ -22,6 +22,7 @@ class MenuLeioa(object):
         img = ImageTk.PhotoImage(resize_img)
         label = tk.Label(frame, image=img, fg="black", bg="black", width=80, height=60)
         label.pack()
+        self.admin = admin
 
         tk.Label(text="Lehenetsitako zailtasuna ertaina da", bg="black", fg="white").place(x=12, rely=0.45)
 
@@ -49,11 +50,11 @@ class MenuLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
-        jl.JokatuLeioa(1)
+        jl.JokatuLeioa(1, 0)
 
     def clickEgin2(self):
         self.window.destroy()
-        zl.ZailtasunLeioa()
+        zl.ZailtasunLeioa(self.admin)
 
     def clickEgin3(self):
         self.window.destroy()

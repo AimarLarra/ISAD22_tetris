@@ -3,12 +3,13 @@ import tkinter as tk
 from model.Tableroa import Tableroa
 from model.Piezak import *
 from PIL import Image,ImageTk
+import view.MenuLeioa as mL
 
 
 class JokatuLeioa(object):
 	"""docstring for JokatuLeioa"""
 	
-	def __init__(self, pZailtasuna):
+	def __init__(self, pZailtasuna, pAdmin):
 		super(JokatuLeioa, self).__init__()
 		self.window = tk.Tk()
 		self.window.geometry('260x520')
@@ -28,6 +29,13 @@ class JokatuLeioa(object):
 		button = tk.Button(self.window, text="Partida hasi")
 		button.pack()
 
+		def itzuli():
+			self.window.destroy()
+			mL.MenuLeioa(pAdmin)
+
+		buttonItzuli = tk.Button(self.window, text="Menura itzuli", command=itzuli)
+		buttonItzuli.pack()
+
 		puntuazioa = tk.StringVar()
 		puntuazioa.set("Puntuazioa: 0")
 
@@ -43,6 +51,8 @@ class JokatuLeioa(object):
 		self.window.bind("<Left>", canvas.joku_kontrola)
 
 		self.window.mainloop()
+
+
 
 
 class TableroaPanela(tk.Frame):
@@ -147,12 +157,8 @@ class TableroaPanela(tk.Frame):
 		self.marraztu_tableroa()
 		if self.zailtasuna == 0:
 			self.jokatzen = self.after(400, self.pausu_bat)
-			print("Zailtasun: Erraza")
 		elif self.zailtasuna == 1:
 			self.jokatzen = self.after(200, self.pausu_bat)
-			print("Zailtasun: Ertaina")
 		else:
 			self.jokatzen = self.after(100, self.pausu_bat)
-			print("Zailtasun: Zaila")
 
-		

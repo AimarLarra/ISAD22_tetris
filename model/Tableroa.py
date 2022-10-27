@@ -2,16 +2,16 @@ from model import Piezak
 
 class Tableroa:
 	def __init__(self, zailtasuna):
-		if zailtasuna==0:
-			self.tamaina =(11,22)
-		elif zailtasuna==1:
-			self.tamaina = (10,20)
-		elif zailtasuna==2:
-			self.tamaina=(9,18)
+		if zailtasuna == 0:
+			self.tamaina = (11, 22)
+		elif zailtasuna == 1:
+			self.tamaina = (10, 20)
+		elif zailtasuna == 2:
+			self.tamaina = (9, 18)
 		self.hasieratu_tableroa()
 
 	def hasieratu_tableroa(self):
-		self.tab = [ [ None for y in range(self.tamaina[0])]for x in range(self.tamaina[1])]
+		self.tab = [[None for y in range(self.tamaina[0])]for x in range(self.tamaina[1])]
 		self.pieza = None
 		self.puntuazioa = 0
 
@@ -37,16 +37,16 @@ class Tableroa:
 		self.pieza = None
 
 	def pieza_kokatu_behean(self):
-		for i in range(1,self.tamaina[1]):
+		for i in range(1, self.tamaina[1]):
 			posizio_berria = (self.posizioa[0]+i, self.posizioa[1])
 			if not self.probatu_mugimendua(posizio_berria):
-				self.posizioa = (posizio_berria[0]-1,posizio_berria[1])
+				self.posizioa = (posizio_berria[0]-1, posizio_berria[1])
 				break
 		self.puntuazioa += (i-1)*2
 
-	def sartu_pieza(self,pieza):
+	def sartu_pieza(self, pieza):
 		x = -pieza.min_x()
-		self.posizioa = (x,(self.tamaina[0]//2)-1)
+		self.posizioa = (x, (self.tamaina[0]//2)-1)
 		self.pieza = pieza
 		if not self.probatu_mugimendua(self.posizioa):
 			raise Exception("Pieza ezin da hor sartu")

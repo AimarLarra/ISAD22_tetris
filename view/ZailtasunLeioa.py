@@ -1,14 +1,17 @@
 import tkinter as tk
-import view.JokatuLeioa as jl
-from PIL import Image,ImageTk
+import view.JokatuLeioa as jL
+from PIL import Image, ImageTk
+
+
 class ZailtasunLeioa(object):
 
-    def __init__(self):
+    def __init__(self, admin):
         super(ZailtasunLeioa, self).__init__()
         self.window = tk.Tk()
         self.window.geometry('220x460')
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
+        self.admin = admin
 
         frame = tk.Frame(self.window, width=1, height=1, bg="black")
         frame.place(x=1, rely=0.01)
@@ -31,13 +34,13 @@ class ZailtasunLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
-        jl.JokatuLeioa(0)
+        jL.JokatuLeioa(0, self.admin)
 
 
     def clickEgin2(self):
         self.window.destroy()
-        jl.JokatuLeioa(1)
+        jL.JokatuLeioa(1, self.admin)
 
     def clickEgin3(self):
         self.window.destroy()
-        jl.JokatuLeioa(2)
+        jL.JokatuLeioa(2, self.admin)

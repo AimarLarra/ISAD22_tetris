@@ -60,7 +60,7 @@ class ErabEzabatuLeioa(object):
             self.window.destroy()
 
             popupmsg("Erabiltzaile hori ez da existitzen")
-            ml.MenuLeioa()
+            ml.MenuLeioa(1)
 
         def clickEgin2():
             self.window.destroy()
