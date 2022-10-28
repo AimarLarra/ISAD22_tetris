@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
-from model.DatuBasea import datuBasea
+from Controller.DatuBasea import datuBasea
 from PIL import Image, ImageTk
 import view.MenuLeioa as ml
 

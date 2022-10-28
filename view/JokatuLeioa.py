@@ -60,12 +60,12 @@ class TableroaPanela(tk.Frame):
 	def __init__(self, tamaina=None, gelazka_tamaina=20, puntuazioalabel=None, master=None, zailtasuna=None):
 		tk.Frame.__init__(self, master)
 		self.puntuazio_panela = puntuazioalabel
-		if zailtasuna==0:
-			self.tamaina =(11,22)
-		elif zailtasuna==1:
-			self.tamaina = (10,20)
-		elif zailtasuna==2:
-			self.tamaina=(9,18)
+		if zailtasuna == 0:
+			self.tamaina = (11, 22)
+		elif zailtasuna == 1:
+			self.tamaina = (10, 20)
+		elif zailtasuna == 2:
+			self.tamaina=(9, 18)
 
 		self.gelazka_tamaina = gelazka_tamaina
 		self.zailtasuna = zailtasuna

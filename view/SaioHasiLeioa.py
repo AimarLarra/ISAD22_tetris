@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
-from model.DatuBasea import datuBasea
+from Controller.DatuBasea import datuBasea
 from PIL import Image, ImageTk
 import view.HasieraLeioa as hL
 from view.MenuLeioa import MenuLeioa
@@ -33,6 +33,7 @@ class SaioHasiLeioa(object):
 
         erab = StringVar()
         entry = Entry(self.window, textvariable=erab)
+        entry.focus()
         entry.place(x=20, rely=0.45, width=180)
 
         Label(text="Pasahitza: ", bg="black", fg="white").place(x=20, rely=0.5, width=180)
