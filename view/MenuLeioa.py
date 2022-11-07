@@ -5,6 +5,7 @@ import view.HasieraLeioa as hL
 import view.ErabEzabatuLeioa as eEL
 import view.JokatuKargatuLeioa as jKL
 import controller.DatuBasea as dB
+import view.PertsonalizazioLeioa as pL
 from PIL import ImageTk, Image
 
 
@@ -39,7 +40,10 @@ class MenuLeioa(object):
 
         if datuBasea.getAdmin(datuBasea.getUnekoa()):
             buttonErabEzabatu = tk.Button(self.window, text="ERABILTZAILEAK EZABATU", command=self.clickEgin5)
-            buttonErabEzabatu.place(x=15, rely=0.70, width=180)
+            buttonErabEzabatu.place(x=15, rely=0.80, width=180)
+
+        buttonPertsonalizazioa = tk.Button(self.window, text="PERTSONALIZAZIOA", command=self.clickEgin6)
+        buttonPertsonalizazioa.place(x=15, rely=0.70, width=180)
 
         buttonItzuli = tk.Button(self.window, text="ITZULI", command=self.clickEgin4)
         buttonItzuli.place(x=10, rely=0.90, width=70)
@@ -66,3 +70,7 @@ class MenuLeioa(object):
     def clickEgin5(self):
         self.window.destroy()
         eEL.ErabEzabatuLeioa()
+
+    def clickEgin6(self):
+        self.window.destroy()
+        pL.PertsonalizazioLeioa()

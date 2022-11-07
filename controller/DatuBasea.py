@@ -22,7 +22,7 @@ class datuBasea:
     def taulaSortuPertsonalizazioa(self):
         con = sqlite3.connect("tetrisJokoa.db")
         con.execute(
-        "CREATE TABLE if not exists pertsonalizazioa (erabiltzailea varchar(20) NOT NULL, atzekoKolorea varchar(40), Laukia varchar(10), Zutabea varchar(10), Lforma varchar(10), LformaAlderantzizko varchar(10), Zforma varchar(10), ZformaAlderantzizko varchar(10), Tforma varchar(10), PRIMARY KEY(erabiltzailea));")
+        "CREATE TABLE if not exists pertsonalizazioa (erabiltzailea varchar(20) NOT NULL, atzekoKolorea varchar(40), musika varchar(20), Laukia varchar(10), Zutabea varchar(10), Lforma varchar(10), LformaAlderantzizko varchar(10), Zforma varchar(10), ZformaAlderantzizko varchar(10), Tforma varchar(10), PRIMARY KEY(erabiltzailea));")
         con.commit()
         con.close()
 
@@ -157,6 +157,18 @@ class datuBasea:
         cur = con.cursor()
         try:
             res = cur.execute("UPDATE erregistroa SET unekoErab = '" + BaiEz + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
+            res.fetchall()
+            con.commit()
+            con.close()
+        except sqlite3.IntegrityError:
+            con.close()
+
+    def pertsonalizazioaEguneratu(self, kolorea, musika, adreilua, adrKolorea, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        try:
+            res = cur.execute(
+                "UPDATE pertsonalizazioa SET kolorea = '" + kolorea + "', musika = '" + musika + "', " + adreilua + " = '" + adrKolorea + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
             res.fetchall()
             con.commit()
             con.close()

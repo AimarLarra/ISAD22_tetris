@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d9505f1-d0df-45bc-8db6-b4eb4e9859a2" name="Changes" comment="JokatuKargatuLeioa sortuta.">
+    <list default="true" id="1d9505f1-d0df-45bc-8db6-b4eb4e9859a2" name="Changes" comment="Admin, unekoa datu basean sartuta, datu base eguneratua">
+      <change afterPath="$PROJECT_DIR$/view/PertsonalizazioLeioa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/DatuBasea.py" beforeDir="false" afterPath="$PROJECT_DIR$/controller/DatuBasea.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/DatuakAldatuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/DatuakAldatuLeioa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/ErabEzabatuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/ErabEzabatuLeioa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/ErregistroLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/ErregistroLeioa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/HasieraLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/HasieraLeioa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/JokatuKargatuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/JokatuKargatuLeioa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/JokatuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/JokatuLeioa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/DatuBasea.py" beforeDir="false" afterPath="$PROJECT_DIR$/controller/DatuBasea.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetrisJokoa.db" beforeDir="false" afterPath="$PROJECT_DIR$/tetrisJokoa.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/MenuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/MenuLeioa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/SaioHasiLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/SaioHasiLeioa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/ZailtasunLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/ZailtasunLeioa.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +107,21 @@
       <option name="project" value="LOCAL" />
       <updated>1667832490665</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Admin, unekoa datu basean sartuta">
+      <created>1667840292631</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1667840292631</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Admin, unekoa datu basean sartuta, datu base eguneratua">
+      <created>1667840422116</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1667840422116</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -135,6 +143,8 @@
     <MESSAGE value="Datu basea amaituta, zailtasun abiadura eginda." />
     <MESSAGE value="Pertsonalizazio datu basea sortuta." />
     <MESSAGE value="JokatuKargatuLeioa sortuta." />
-    <option name="LAST_COMMIT_MESSAGE" value="JokatuKargatuLeioa sortuta." />
+    <MESSAGE value="Admin, unekoa datu basean sartuta" />
+    <MESSAGE value="Admin, unekoa datu basean sartuta, datu base eguneratua" />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin, unekoa datu basean sartuta, datu base eguneratua" />
   </component>
 </project>
