@@ -1,9 +1,9 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
-from Controller.DatuBasea import datuBasea
+from controller.DatuBasea import datuBasea
 from PIL import Image, ImageTk
-import view.MenuLeioa as ml
+import view.MenuLeioa as mL
 
 
 class ErabEzabatuLeioa(object):
@@ -31,12 +31,11 @@ class ErabEzabatuLeioa(object):
         entry = Entry(self.window, width=30, textvariable=erab)
         entry.place(x=15, rely=0.40)
 
-
         def popupmsg(msg):
             popup = tk.Tk()
             popup.wm_title("Errorea!")
-            label = ttk.Label(popup, text=msg)
-            label.pack(side="top", fill="x", pady=10)
+            label2 = ttk.Label(popup, text=msg)
+            label2.pack(side="top", fill="x", pady=10)
             B1 = ttk.Button(popup, text="Okay", command=popup.destroy)
             B1.pack()
             popup.mainloop()
@@ -45,7 +44,7 @@ class ErabEzabatuLeioa(object):
             db = datuBasea()
             db.taulaSortu()
             if entry.get():
-                if entry.get()!="admin":
+                if not db.getAdmin(entry.get()):
                     emaitza = db.erabiltzaileaKonprobatu2(entry.get())
                     if emaitza:
                         db.erabiltzaileEzabatu(entry.get())
@@ -60,11 +59,11 @@ class ErabEzabatuLeioa(object):
             self.window.destroy()
 
             popupmsg("Erabiltzaile hori ez da existitzen")
-            ml.MenuLeioa(1)
+            mL.MenuLeioa()
 
         def clickEgin2():
             self.window.destroy()
-            ml.MenuLeioa(1)
+            mL.MenuLeioa()
 
         buttonAldatu = tk.Button(self.window, text="EZABATU", command=clickEgin1)
         buttonAldatu.place(x=15, rely=0.45)

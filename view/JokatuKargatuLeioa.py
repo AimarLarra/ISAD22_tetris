@@ -1,17 +1,17 @@
 import tkinter as tk
 import view.JokatuLeioa as jL
-from Controller.DatuBasea import datuBasea
+from controller.DatuBasea import datuBasea
 from PIL import ImageTk, Image
+
 
 class JokatuKargatuLeioa(object):
 
-    def __init__(self, pAdmin):
+    def __init__(self):
         super(JokatuKargatuLeioa, self).__init__()
         self.window = tk.Tk()
         self.window.geometry('220x460')
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
-        self.admin = pAdmin
 
         frame = tk.Frame(self.window, width=1, height=1, bg="black")
         frame.place(x=1, rely=0.01)
@@ -29,14 +29,10 @@ class JokatuKargatuLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
-        jL.JokatuLeioa(1, self.admin)
-
+        jL.JokatuLeioa(1)
 
     def clickEgin2(self):
         db = datuBasea()
-        file = open("unekoErab.txt", "r")
-        zailtasuna = db.getZailtasuna(file.read())
-        file.close()
+        zailtasuna = db.getZailtasuna(db.getUnekoa())
         self.window.destroy()
-        jL.JokatuLeioa(zailtasuna, self.admin)
-
+        jL.JokatuLeioa(zailtasuna)

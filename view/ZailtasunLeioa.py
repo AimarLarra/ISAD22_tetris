@@ -5,13 +5,12 @@ from PIL import Image, ImageTk
 
 class ZailtasunLeioa(object):
 
-    def __init__(self, admin):
+    def __init__(self):
         super(ZailtasunLeioa, self).__init__()
         self.window = tk.Tk()
         self.window.geometry('220x460')
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
-        self.admin = admin
 
         frame = tk.Frame(self.window, width=1, height=1, bg="black")
         frame.place(x=1, rely=0.01)
@@ -34,13 +33,13 @@ class ZailtasunLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
-        jL.JokatuLeioa(0, self.admin)
+        jL.JokatuLeioa(0)
 
 
     def clickEgin2(self):
         self.window.destroy()
-        jL.JokatuLeioa(1, self.admin)
+        jL.JokatuLeioa(1)
 
     def clickEgin3(self):
         self.window.destroy()
-        jL.JokatuLeioa(2, self.admin)
+        jL.JokatuLeioa(2)

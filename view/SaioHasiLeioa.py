@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
-from Controller.DatuBasea import datuBasea
+from controller.DatuBasea import datuBasea
 from PIL import Image, ImageTk
 import view.HasieraLeioa as hL
 from view.MenuLeioa import MenuLeioa
@@ -45,8 +45,8 @@ class SaioHasiLeioa(object):
         def popupmsg(msg):
             popup = tk.Tk()
             popup.wm_title("Errorea!")
-            label = ttk.Label(popup, text=msg)
-            label.pack(side="top", fill="x", pady=10)
+            label2 = ttk.Label(popup, text=msg)
+            label2.pack(side="top", fill="x", pady=10)
             b1 = ttk.Button(popup, text="Okay", command=popup.destroy)
             b1.pack()
             popup.mainloop()
@@ -54,19 +54,18 @@ class SaioHasiLeioa(object):
         def clickEgin1():
             db = datuBasea()
             db.taulaSortu()
-            file = open("unekoErab.txt", "w")
+            if db.getUnekoa() != '':
+                db.setUnekoa(db.getUnekoa(), "Ez")
             if entry.get() and entry2.get():
                 emaitza = db.erabiltzaileaKonprobatu(entry.get(), entry2.get())
                 if emaitza:
-                    if entry.get() == "admin":
-                        file.write(entry.get())
-                        file.close()
+                    if db.getAdmin(entry.get()):
+                        db.setUnekoa(entry.get(), "Bai")
                         self.window.destroy()
-                        MenuLeioa(1)
-                    file.write(entry.get())
-                    file.close()
+                        MenuLeioa()
+                    db.setUnekoa(entry.get(), "Bai")
                     self.window.destroy()
-                    MenuLeioa(0)
+                    MenuLeioa()
                 else:
                     popupmsg("Erabiltzaile hori ez da existitzen edo pasahitza okerra da!")
             else:

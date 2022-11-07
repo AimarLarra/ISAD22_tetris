@@ -8,7 +8,7 @@ class datuBasea:
 
     def taulaSortu(self):
         con = sqlite3.connect("tetrisJokoa.db")
-        con.execute("CREATE TABLE if not exists erregistroa (erabiltzailea varchar(20) NOT NULL, pasahitza varchar(20) NOT NULL, PRIMARY KEY (erabiltzailea));")
+        con.execute("CREATE TABLE if not exists erregistroa (erabiltzailea varchar(20) NOT NULL, pasahitza varchar(20) NOT NULL, administratzailea varchar(3) DEFAULT NULL, unekoErab varchar(3) DEFAULT NULL, PRIMARY KEY (erabiltzailea));")
         con.commit()
         con.close()
 
@@ -19,7 +19,7 @@ class datuBasea:
         con.commit()
         con.close()
 
-    def taulaSortuPartida(self):
+    def taulaSortuPertsonalizazioa(self):
         con = sqlite3.connect("tetrisJokoa.db")
         con.execute(
         "CREATE TABLE if not exists pertsonalizazioa (erabiltzailea varchar(20) NOT NULL, atzekoKolorea varchar(40), Laukia varchar(10), Zutabea varchar(10), Lforma varchar(10), LformaAlderantzizko varchar(10), Zforma varchar(10), ZformaAlderantzizko varchar(10), Tforma varchar(10), PRIMARY KEY(erabiltzailea));")
@@ -30,7 +30,7 @@ class datuBasea:
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
         try:
-            res = cur.execute("INSERT INTO erregistroa VALUES ('" + erabiltzailea + "', '" + pasahitza + "')")
+            res = cur.execute("INSERT INTO erregistroa VALUES ('" + erabiltzailea + "', '" + pasahitza + "', 'Ez', 'Ez')")
             res.fetchall()
             con.commit()
             con.close()
@@ -78,7 +78,7 @@ class datuBasea:
         con.commit()
         con.close()
         return datuak
-    
+
     def erabiltzailearenDatuakEguneratu(self, erab, pasa, erabBerria, pasaBerria):
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
@@ -92,10 +92,10 @@ class datuBasea:
             con.close()
             return False
 
-    def partidaGorde(self, erab, zerrenda):
+    def partidaGorde(self, erab, zerrenda, partida):
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
-        res = cur.execute("INSERT INTO partida VALUES ('" + erab + "', '" + zerrenda + "')")
+        res = cur.execute("INSERT INTO partida VALUES ('" + erab + "', '" + zerrenda + "', '" + partida + "')")
         res.fetchall()
         con.commit()
         con.close()
@@ -117,3 +117,48 @@ class datuBasea:
         con.commit()
         con.close()
         return datuak
+
+    def getAdmin(self, erabiltzailea):  # devuelve si es admin o no
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        cur.execute("SELECT administratzailea FROM erregistroa WHERE erabiltzailea = '" + erabiltzailea + "'")
+        datuak = cur.fetchone()
+        con.commit()
+        con.close()
+        return ''.join(datuak) == "Bai"
+
+    def setAdmin(self, erabiltzailea, BaiEz):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        try:
+            res = cur.execute("UPDATE erregistroa SET administratzailea = '" + BaiEz + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
+            res.fetchall()
+            con.commit()
+            con.close()
+            return True
+        except sqlite3.IntegrityError:
+            con.close()
+            return False
+
+    def getUnekoa(self):  # devuelve el nombre del uneko, sino nada
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        cur.execute("SELECT erabiltzailea FROM erregistroa WHERE unekoErab = 'Bai'")
+        datuak = cur.fetchone()
+        con.commit()
+        con.close()
+        if datuak:
+            return ''.join(datuak)
+        else:
+            return ''
+
+    def setUnekoa(self, erabiltzailea, BaiEz):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        try:
+            res = cur.execute("UPDATE erregistroa SET unekoErab = '" + BaiEz + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
+            res.fetchall()
+            con.commit()
+            con.close()
+        except sqlite3.IntegrityError:
+            con.close()

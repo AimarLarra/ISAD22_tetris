@@ -1,13 +1,13 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
-from Controller.DatuBasea import datuBasea
-from PIL import Image,ImageTk
-import view.MenuLeioa as ml
+from controller.DatuBasea import datuBasea
+from PIL import Image, ImageTk
+import view.MenuLeioa as mL
 
 
 class DatuakAldatuLeioa(object):
-    def __init__(self, admin):
+    def __init__(self):
         super(DatuakAldatuLeioa, self).__init__()
         self.window = tk.Tk()
         self.window.geometry('220x460')
@@ -55,8 +55,8 @@ class DatuakAldatuLeioa(object):
         def popupmsg(msg):
             popup = tk.Tk()
             popup.wm_title("Errorea!")
-            label = ttk.Label(popup, text=msg)
-            label.pack(side="top", fill="x", pady=10)
+            label2 = ttk.Label(popup, text=msg)
+            label2.pack(side="top", fill="x", pady=10)
             B1 = ttk.Button(popup, text="Okay", command=popup.destroy)
             B1.pack()
             popup.mainloop()
@@ -64,54 +64,28 @@ class DatuakAldatuLeioa(object):
         def clickEgin1():
             db = datuBasea()
             if entry.get() and entry2.get() and entry3.get() and entry4.get():
-                if entry.get()!="admin":
-                    emaitza = db.erabiltzailearenDatuakEguneratu(entry.get(), entry2.get(), entry3.get(), entry4.get())
-                    if emaitza:
-                        # Si esta bien
-                        self.window.destroy()
-                        ml.MenuLeioa(0)
+                if not db.getAdmin(entry.get()):
+                    if entry.get() == db.getUnekoa():  # Solo puede cambiar sus propios datos
+                        emaitza = db.erabiltzailearenDatuakEguneratu(entry.get(), entry2.get(), entry3.get(), entry4.get())
+                        if emaitza:
+                            self.window.destroy()
+                            mL.MenuLeioa()
+                        else:
+                            popupmsg("Erabiltzailea edo pasahitza oker daude!")
                     else:
-                        popupmsg("Erabiltzailea edo pasahitza oker daude!")
+                        popupmsg("Ez da zure erabiltzailea!")
                 else:
                     popupmsg("Ezin dira administratzaile datuak aldatu!")
             else:
                 popupmsg("Datuak ondo sartu!")
 
-        def clickEgin1Admin():
-            db = datuBasea()
-            if entry.get() and entry2.get() and entry3.get() and entry4.get():
-                if entry.get() != "admin":
-                    emaitza = db.erabiltzailearenDatuakEguneratu(entry.get(), entry2.get(), entry3.get(), entry4.get())
-                    if emaitza:
-                        # Si esta bien
-                        self.window.destroy()
-                        ml.MenuLeioa(1)
-                    else:
-                        popupmsg("Erabiltzailea edo pasahitza oker daude!")
-                else:
-                    popupmsg("Ezin dira administratzaile datuak aldatu!")
-            else:
-                popupmsg("Datuak ondo sartu!")
         def clickEgin2():
             self.window.destroy()
-            ml.MenuLeioa(0)
+            mL.MenuLeioa()
 
-        def clickEgin2Admin():
-            self.window.destroy()
-            ml.MenuLeioa(1)
+        buttonAldatu = tk.Button(self.window, text="ALDATU", command=clickEgin1)
+        buttonAldatu.place(x=15, rely=0.75)
 
-
-
-        if admin==1:
-            buttonAldatu = tk.Button(self.window, text="ALDATU", command=clickEgin1Admin)
-            buttonAldatu.place(x=15, rely=0.75)
-
-            buttonItzuli= tk.Button(self.window, text="ITZULI", command=clickEgin2Admin)
-            buttonItzuli.place(x=15, rely=0.90)
-        else:
-            buttonAldatu = tk.Button(self.window, text="ALDATU", command=clickEgin1)
-            buttonAldatu.place(x=15, rely=0.75)
-
-            buttonItzuli = tk.Button(self.window, text="ITZULI", command=clickEgin2)
-            buttonItzuli.place(x=15, rely=0.90)
+        buttonItzuli = tk.Button(self.window, text="ITZULI", command=clickEgin2)
+        buttonItzuli.place(x=15, rely=0.90)
         self.window.mainloop()

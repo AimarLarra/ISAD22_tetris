@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
-from Controller.DatuBasea import datuBasea
-from PIL import Image,ImageTk
+from controller.DatuBasea import datuBasea
+from PIL import Image, ImageTk
 import view.HasieraLeioa as hL
 
 
@@ -44,8 +44,8 @@ class ErregistroLeioa(object):
         def popupmsg(msg):
             popup = tk.Tk()
             popup.wm_title("Errorea!")
-            label = ttk.Label(popup, text=msg)
-            label.pack(side="top", fill="x", pady=10)
+            label2 = ttk.Label(popup, text=msg)
+            label2.pack(side="top", fill="x", pady=10)
             b1 = ttk.Button(popup, text="Okay", command=popup.destroy)
             b1.pack()
             popup.mainloop()

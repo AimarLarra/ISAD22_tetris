@@ -1,8 +1,9 @@
 import tkinter as tk
 from tkinter import *
-import view.ErregistroLeioa as el
+import view.ErregistroLeioa as eL
 from view.SaioHasiLeioa import SaioHasiLeioa
-from PIL import Image,ImageTk
+from PIL import Image, ImageTk
+
 
 class HasieraLeioa(object):
 
@@ -23,17 +24,17 @@ class HasieraLeioa(object):
         label = tk.Label(frame, image=img, fg="black", bg="black", width=200, height=100)
         label.pack()
 
-        tk.Label(text="Saioa hasi jolasten hasteko",bg="black",fg="white").place(x=17, rely=0.4)
+        tk.Label(text="Saioa hasi jolasten hasteko", bg="black", fg="white").place(x=17, rely=0.4)
 
         buttonSaioaHasi = tk.Button(self.window, text="SAIOA HASI", command=self.clickEgin2)
-        buttonSaioaHasi.place(x=20, rely=0.45, width= 180)
+        buttonSaioaHasi.place(x=20, rely=0.45, width=180)
 
         tk.Label(text="Konturik ez baduzu erregistratu", bg="black", fg="white").place(x=17, rely=0.55)
 
         buttonErregistro = tk.Button(self.window, text="ERREGISTRATU", command=self.clickEgin1)
-        buttonErregistro.place(x=20, rely=0.6,width=180)
+        buttonErregistro.place(x=20, rely=0.6, width=180)
 
-        egileak = tk.Label(text="Egileak:  Aimar Larrazabal",bg="black",fg="white")
+        egileak = tk.Label(text="Egileak:  Aimar Larrazabal", bg="black", fg="white")
         egileak.place(relx=0.05, rely=0.85)
         egileak2 = tk.Label(text="Eneko Perez", bg="black", fg="white")
         egileak2.place(relx=0.25, rely=0.89)
@@ -44,9 +45,8 @@ class HasieraLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
-        el.ErregistroLeioa()
+        eL.ErregistroLeioa()
 
     def clickEgin2(self):
         self.window.destroy()
         SaioHasiLeioa()
-

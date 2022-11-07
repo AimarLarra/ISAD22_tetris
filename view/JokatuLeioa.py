@@ -4,14 +4,13 @@ from model.Tableroa import Tableroa
 from model.Piezak import *
 from PIL import Image, ImageTk
 import view.MenuLeioa as mL
-from Controller.DatuBasea import datuBasea
-
+from controller.DatuBasea import datuBasea
 
 
 class JokatuLeioa(object):
 	"""docstring for JokatuLeioa"""
 	
-	def __init__(self, pZailtasuna, pAdmin):
+	def __init__(self, pZailtasuna):
 		super(JokatuLeioa, self).__init__()
 		self.window = tk.Tk()
 		self.window.geometry('260x520')
@@ -36,7 +35,7 @@ class JokatuLeioa(object):
 
 		def itzuli():
 			self.window.destroy()
-			mL.MenuLeioa(pAdmin)
+			mL.MenuLeioa()
 
 		buttonItzuli = tk.Button(self.window, text="Menura itzuli", command=itzuli)
 		buttonItzuli.pack()
@@ -58,9 +57,6 @@ class JokatuLeioa(object):
 
 		self.window.mainloop()
 
-
-
-
 class TableroaPanela(tk.Frame):
 
 	def __init__(self, tamaina=None, gelazka_tamaina=20, puntuazioalabel=None, master=None, zailtasuna=None):
@@ -71,12 +67,10 @@ class TableroaPanela(tk.Frame):
 		elif zailtasuna == 1:
 			self.tamaina = (10, 20)
 		elif zailtasuna == 2:
-			self.tamaina=(9, 18)
+			self.tamaina = (9, 18)
 
 		self.gelazka_tamaina = gelazka_tamaina
 		self.zailtasuna = zailtasuna
-
-
 
 		self.canvas = tk.Canvas(
 			width=self.tamaina[0] * self.gelazka_tamaina+1,
@@ -88,7 +82,6 @@ class TableroaPanela(tk.Frame):
 		self.tab = Tableroa(zailtasuna)
 		self.jokatzen = None
 		self.tableroa_ezabatu()
-
 
 	def marratu_gelazka(self, x, y, color):
 		self.canvas.create_rectangle(x*self.gelazka_tamaina, y*self.gelazka_tamaina,
@@ -110,7 +103,6 @@ class TableroaPanela(tk.Frame):
 				y = self.tab.posizioa[1] + self.tab.pieza.get_y(i)
 				self.marratu_gelazka(y, x, self.tab.pieza.get_kolorea())
 		self.puntuazioa_eguneratu()
-
 
 	def pausu_bat(self):
 		try:
@@ -136,8 +128,6 @@ class TableroaPanela(tk.Frame):
 	def puntuazioa_eguneratu(self):
 		if self.puntuazio_panela:
 			self.puntuazio_panela.set(f"Puntuazioa: {self.tab.puntuazioa}")
-
-		
 
 	def joku_kontrola(self, event):
 		try:
@@ -174,6 +164,4 @@ class TableroaPanela(tk.Frame):
 			zerrenda = self.tab.imprimatu2()
 			db = datuBasea()
 			db.taulaSortuPartida()
-			file = open("unekoErab.txt", "r")
-			db.partidaGorde(file.read(), zerrenda)
-			file.close()
+			db.partidaGorde(db.getUnekoa(), zerrenda)
