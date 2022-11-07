@@ -139,7 +139,7 @@ class Tableroa:
 			print()
 		for i in range(self.tamaina[1]):
 			for j in range(self.tamaina[0]):
-				zerrenda.insert(kont, '#' if tmp_tab[i][j] else ' ')
+				zerrenda.insert(kont, tmp_tab[i][j] if tmp_tab[i][j] else ' ')
 				kont = kont+1
 		return ''.join(zerrenda)
 

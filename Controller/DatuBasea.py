@@ -15,7 +15,7 @@ class datuBasea:
     def taulaSortuPartida(self):
         con = sqlite3.connect("tetrisJokoa.db")
         con.execute(
-            "CREATE TABLE if not exists partida (erabiltzailea varchar(20) NOT NULL, zerrenda varchar(400) NOT NULL, PRIMARY KEY (erabiltzailea));")
+            "CREATE TABLE if not exists partida (erabiltzailea varchar(20) NOT NULL, zerrenda varchar(400), zailtasuna varchar(10), PRIMARY KEY (erabiltzailea));")
         con.commit()
         con.close()
 
@@ -103,14 +103,17 @@ class datuBasea:
     def partidaKargatu(self, erabiltzailea):
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
-        cur.execute("SELECT * FROM partida WHERE erabiltzailea = '" + erabiltzailea + "'")
+        cur.execute("SELECT zerrenda FROM partida WHERE erabiltzailea = '" + erabiltzailea + "'")
         datuak = cur.fetchall()
         con.commit()
         con.close()
         return datuak
 
-    def setErabiltzailea(self, erabiltzailea):
-        self.erabiltzailea = erabiltzailea
-
-    def getErabiltzailea(self):
-        return(self.erabiltzailea)
+    def getZailtasuna(self, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        cur.execute("SELECT zailtasuna FROM partida WHERE erabiltzailea = '" + erabiltzailea + "'")
+        datuak = cur.fetchone()
+        con.commit()
+        con.close()
+        return datuak

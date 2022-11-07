@@ -54,14 +54,17 @@ class SaioHasiLeioa(object):
         def clickEgin1():
             db = datuBasea()
             db.taulaSortu()
+            file = open("unekoErab.txt", "w")
             if entry.get() and entry2.get():
                 emaitza = db.erabiltzaileaKonprobatu(entry.get(), entry2.get())
                 if emaitza:
                     if entry.get() == "admin":
-                        db.setErabiltzailea(entry.get())
-                        print(db.getErabiltzailea())
+                        file.write(entry.get())
+                        file.close()
                         self.window.destroy()
                         MenuLeioa(1)
+                    file.write(entry.get())
+                    file.close()
                     self.window.destroy()
                     MenuLeioa(0)
                 else:

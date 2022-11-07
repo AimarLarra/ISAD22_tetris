@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d9505f1-d0df-45bc-8db6-b4eb4e9859a2" name="Changes" comment="DatuBasea.py Controller karpetan sartu.">
+    <list default="true" id="1d9505f1-d0df-45bc-8db6-b4eb4e9859a2" name="Changes" comment="Pertsonalizazio datu basea sortuta.">
+      <change afterPath="$PROJECT_DIR$/view/JokatuKargatuLeioa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller/DatuBasea.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller/DatuBasea.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/Tableroa.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/Tableroa.py" afterDir="false" />
@@ -94,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666941642133</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Pertsonalizazio datu basea sortuta.">
+      <created>1667810024522</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667810024522</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,6 +122,7 @@
     <MESSAGE value="Datu basea sartuta, erregistro leioa ondo, besteak amaitu gabe." />
     <MESSAGE value="Datu basea amaituta, zailtasuna falta" />
     <MESSAGE value="Datu basea amaituta, zailtasun abiadura eginda." />
-    <option name="LAST_COMMIT_MESSAGE" value="Datu basea amaituta, zailtasun abiadura eginda." />
+    <MESSAGE value="Pertsonalizazio datu basea sortuta." />
+    <option name="LAST_COMMIT_MESSAGE" value="Pertsonalizazio datu basea sortuta." />
   </component>
 </project>

@@ -174,5 +174,6 @@ class TableroaPanela(tk.Frame):
 			zerrenda = self.tab.imprimatu2()
 			db = datuBasea()
 			db.taulaSortuPartida()
-			print(db.getErabiltzailea())
-			db.partidaGorde(db.getErabiltzailea(), zerrenda)
+			file = open("unekoErab.txt", "r")
+			db.partidaGorde(file.read(), zerrenda)
+			file.close()

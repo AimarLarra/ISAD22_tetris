@@ -1,9 +1,9 @@
 import tkinter as tk
-import view.JokatuLeioa as jL
 import view.ZailtasunLeioa as zL
 import view.DatuakAldatuLeioa as dAL
 import view.HasieraLeioa as hL
 import view.ErabEzabatuLeioa as eEL
+import view.JokatuKargatuLeioa as jKL
 from PIL import ImageTk, Image
 
 
@@ -51,7 +51,7 @@ class MenuLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
-        jL.JokatuLeioa(1, 0)
+        jKL.JokatuKargatuLeioa(self.admin)
 
     def clickEgin2(self):
         self.window.destroy()
