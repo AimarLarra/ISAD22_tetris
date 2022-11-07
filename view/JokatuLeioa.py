@@ -2,8 +2,10 @@ import random
 import tkinter as tk
 from model.Tableroa import Tableroa
 from model.Piezak import *
-from PIL import Image,ImageTk
+from PIL import Image, ImageTk
 import view.MenuLeioa as mL
+from Controller.DatuBasea import datuBasea
+
 
 
 class JokatuLeioa(object):
@@ -29,6 +31,9 @@ class JokatuLeioa(object):
 		button = tk.Button(self.window, text="Partida hasi")
 		button.pack()
 
+		buttonGorde = tk.Button(self.window, text="Partida gorde")
+		buttonGorde.pack()
+
 		def itzuli():
 			self.window.destroy()
 			mL.MenuLeioa(pAdmin)
@@ -44,6 +49,7 @@ class JokatuLeioa(object):
 
 		canvas = TableroaPanela(master=self.window, puntuazioalabel=puntuazioa, zailtasuna=pZailtasuna)
 		button.configure(command=canvas.jolastu)
+		buttonGorde.configure(command=canvas.partidaGorde)
 		canvas.pack()
 		self.window.bind("<Up>", canvas.joku_kontrola)
 		self.window.bind("<Down>", canvas.joku_kontrola)
@@ -162,3 +168,11 @@ class TableroaPanela(tk.Frame):
 		else:
 			self.jokatzen = self.after(100, self.pausu_bat)
 
+	def partidaGorde(self):
+		if self.jokatzen:
+			self.after_cancel(self.jokatzen)
+			zerrenda = self.tab.imprimatu2()
+			db = datuBasea()
+			db.taulaSortuPartida()
+			print(db.getErabiltzailea())
+			db.partidaGorde(db.getErabiltzailea(), zerrenda)

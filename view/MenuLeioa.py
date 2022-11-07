@@ -1,10 +1,11 @@
 import tkinter as tk
-import view.JokatuLeioa as jl
-import view.ZailtasunLeioa as zl
-import view.DatuakAldatuLeioa as dal
-import view.HasieraLeioa as hl
-import view.ErabEzabatuLeioa as eel
-from PIL import ImageTk,Image
+import view.JokatuLeioa as jL
+import view.ZailtasunLeioa as zL
+import view.DatuakAldatuLeioa as dAL
+import view.HasieraLeioa as hL
+import view.ErabEzabatuLeioa as eEL
+from PIL import ImageTk, Image
+
 
 class MenuLeioa(object):
 
@@ -32,7 +33,7 @@ class MenuLeioa(object):
         buttonZailtasuna = tk.Button(self.window, text="ZAILTASUNA", command=self.clickEgin2)
         buttonZailtasuna.place(x=15, rely=0.40, width=180)
 
-        if admin==1:
+        if admin == 1:
             buttonDatuakAldatu = tk.Button(self.window, text="DATUAK ALDATU", command=self.clickEgin3Admin)
             buttonDatuakAldatu.place(x=15, rely=0.55, width=180)
 
@@ -50,25 +51,25 @@ class MenuLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
-        jl.JokatuLeioa(1, 0)
+        jL.JokatuLeioa(1, 0)
 
     def clickEgin2(self):
         self.window.destroy()
-        zl.ZailtasunLeioa(self.admin)
+        zL.ZailtasunLeioa(self.admin)
 
     def clickEgin3(self):
         self.window.destroy()
-        dal.DatuakAldatuLeioa(0)
+        dAL.DatuakAldatuLeioa(0)
 
     def clickEgin3Admin(self):
         self.window.destroy()
-        dal.DatuakAldatuLeioa(1)
+        dAL.DatuakAldatuLeioa(1)
 
     def clickEgin4(self):
         self.window.destroy()
-        hl.HasieraLeioa()
+        hL.HasieraLeioa()
 
     def clickEgin5(self):
         self.window.destroy()
-        eel.ErabEzabatuLeioa()
+        eEL.ErabEzabatuLeioa()
 

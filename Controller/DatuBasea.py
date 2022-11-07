@@ -12,6 +12,20 @@ class datuBasea:
         con.commit()
         con.close()
 
+    def taulaSortuPartida(self):
+        con = sqlite3.connect("tetrisJokoa.db")
+        con.execute(
+            "CREATE TABLE if not exists partida (erabiltzailea varchar(20) NOT NULL, zerrenda varchar(400) NOT NULL, PRIMARY KEY (erabiltzailea));")
+        con.commit()
+        con.close()
+
+    def taulaSortuPartida(self):
+        con = sqlite3.connect("tetrisJokoa.db")
+        con.execute(
+        "CREATE TABLE if not exists pertsonalizazioa (erabiltzailea varchar(20) NOT NULL, atzekoKolorea varchar(40), Laukia varchar(10), Zutabea varchar(10), Lforma varchar(10), LformaAlderantzizko varchar(10), Zforma varchar(10), ZformaAlderantzizko varchar(10), Tforma varchar(10), PRIMARY KEY(erabiltzailea));")
+        con.commit()
+        con.close()
+
     def erabiltzaileGehitu(self, erabiltzailea, pasahitza):
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
@@ -77,3 +91,26 @@ class datuBasea:
         except sqlite3.IntegrityError:
             con.close()
             return False
+
+    def partidaGorde(self, erab, zerrenda):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        res = cur.execute("INSERT INTO partida VALUES ('" + erab + "', '" + zerrenda + "')")
+        res.fetchall()
+        con.commit()
+        con.close()
+
+    def partidaKargatu(self, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        cur.execute("SELECT * FROM partida WHERE erabiltzailea = '" + erabiltzailea + "'")
+        datuak = cur.fetchall()
+        con.commit()
+        con.close()
+        return datuak
+
+    def setErabiltzailea(self, erabiltzailea):
+        self.erabiltzailea = erabiltzailea
+
+    def getErabiltzailea(self):
+        return(self.erabiltzailea)

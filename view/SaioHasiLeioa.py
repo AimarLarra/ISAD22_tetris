@@ -58,6 +58,8 @@ class SaioHasiLeioa(object):
                 emaitza = db.erabiltzaileaKonprobatu(entry.get(), entry2.get())
                 if emaitza:
                     if entry.get() == "admin":
+                        db.setErabiltzailea(entry.get())
+                        print(db.getErabiltzailea())
                         self.window.destroy()
                         MenuLeioa(1)
                     self.window.destroy()

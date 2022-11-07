@@ -122,10 +122,27 @@ class Tableroa:
 		for i in range(10):
 			print()
 		for i in range(self.tamaina[1]):
-			print('|',end='')
+			print('|', end='')
 			for j in range(self.tamaina[0]):
-				print('#' if tmp_tab[i][j] else ' ',end='')
+				print('#' if tmp_tab[i][j] else ' ', end='')
 			print('|')
+
+	def imprimatu2(self):
+		tmp_tab = [[y for y in x] for x in self.tab]
+		zerrenda = []
+		kont = 0
+		for i in range(4):
+			x = self.posizioa[0] + self.pieza.get_x(i)
+			y = self.posizioa[1] + self.pieza.get_y(i)
+			tmp_tab[x][y] = self.pieza.get_kolorea()
+		for i in range(10):
+			print()
+		for i in range(self.tamaina[1]):
+			for j in range(self.tamaina[0]):
+				zerrenda.insert(kont, '#' if tmp_tab[i][j] else ' ')
+				kont = kont+1
+		return ''.join(zerrenda)
+
 
 
 
