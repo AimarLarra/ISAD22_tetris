@@ -5,6 +5,8 @@ from model.Piezak import *
 from PIL import Image, ImageTk
 import view.MenuLeioa as mL
 from controller.DatuBasea import datuBasea
+import pickle
+tablerogordeta = []
 
 
 class JokatuLeioa(object):
@@ -57,9 +59,19 @@ class JokatuLeioa(object):
 
 		self.window.mainloop()
 
+	def partida_jarraitu(self):
+		global tablerogordeta
+		db = datuBasea()
+		puntuazioa = db.getPuntuazioa(db.getUnekoa())
+		partidaZerrenda = db.partidaKargatu(db.getUnekoa())
+		partida = pickle.loads(partidaZerrenda[0])
+		tablerogordeta = partida
+		tamaina = db.getZailtasuna(db.getUnekoa())
+		JokatuLeioa(tamaina)
+
 class TableroaPanela(tk.Frame):
 
-	def __init__(self, tamaina=None, gelazka_tamaina=20, puntuazioalabel=None, master=None, zailtasuna=None):
+	def __init__(self, gelazka_tamaina=20, puntuazioalabel=None, master=None, zailtasuna=None):
 		tk.Frame.__init__(self, master)
 		self.puntuazio_panela = puntuazioalabel
 		if zailtasuna == 0:
@@ -161,7 +173,15 @@ class TableroaPanela(tk.Frame):
 	def partidaGorde(self):
 		if self.jokatzen:
 			self.after_cancel(self.jokatzen)
-			zerrenda = self.tab.imprimatu2()
+			gordetakoPartida = [[ None for x in range(self.tamaina[0])]for y in range(self.tamaina[1])]
+			for i in range(self.tab.tamaina[1]):
+				print("i", i)
+				for j in range(self.tab.tamaina[0]):
+					print("j", j)
+					if self.tab.tab[i][j] is not None:
+						gordetakoPartida[i][j] = self.tab.tab[i][j]
+			zerrenda = pickle.dumps(gordetakoPartida)
+			puntuaziopartida = self.tab.puntuazioa
 			db = datuBasea()
 			db.taulaSortuPartida()
-			db.partidaGorde(db.getUnekoa(), zerrenda)
+			db.partidaGorde(db.getUnekoa(), zerrenda, str(self.zailtasuna), puntuaziopartida)

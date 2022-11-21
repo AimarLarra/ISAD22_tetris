@@ -35,4 +35,4 @@ class JokatuKargatuLeioa(object):
         db = datuBasea()
         zailtasuna = db.getZailtasuna(db.getUnekoa())
         self.window.destroy()
-        jL.JokatuLeioa(zailtasuna)
+        jL.JokatuLeioa(zailtasuna).partida_jarraitu()

@@ -78,6 +78,10 @@ class PertsonalizazioLeioa(object):
             # no se va a cerrar cada vez que le demos a guardar.
             db = dB.datuBasea()
             db.pertsonalizazioaEguneratu(boxKolorea.get(), boxMusika.get(), boxAdreilua.get(), boxAdrKolore.get(), db.getUnekoa())
+            boxKolorea.set('')
+            boxMusika.set('')
+            boxAdreilua.set('')
+            boxAdreilua.set('')
 
         def clickEgin2():
             self.window.destroy()

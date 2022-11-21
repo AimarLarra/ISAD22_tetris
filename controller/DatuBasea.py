@@ -15,14 +15,14 @@ class datuBasea:
     def taulaSortuPartida(self):
         con = sqlite3.connect("tetrisJokoa.db")
         con.execute(
-            "CREATE TABLE if not exists partida (erabiltzailea varchar(20) NOT NULL, zerrenda varchar(400), zailtasuna varchar(10), PRIMARY KEY (erabiltzailea));")
+            "CREATE TABLE if not exists partida (erabiltzailea varchar(20) NOT NULL, zerrenda varchar(1000), zailtasuna varchar(10), puntuazioa int(10), PRIMARY KEY (erabiltzailea));")
         con.commit()
         con.close()
 
     def taulaSortuPertsonalizazioa(self):
         con = sqlite3.connect("tetrisJokoa.db")
         con.execute(
-        "CREATE TABLE if not exists pertsonalizazioa (erabiltzailea varchar(20) NOT NULL, atzekoKolorea varchar(40), musika varchar(20), Laukia varchar(10), Zutabea varchar(10), Lforma varchar(10), LformaAlderantzizko varchar(10), Zforma varchar(10), ZformaAlderantzizko varchar(10), Tforma varchar(10), PRIMARY KEY(erabiltzailea));")
+        "CREATE TABLE if not exists pertsonalizazioa (erabiltzailea varchar(20) NOT NULL, atzekoKolorea varchar(40), musika varchar(20), Laukia varchar(10) DEFAULT 'yellow', Zutabea varchar(10) DEFAULT 'cyan', Lforma varchar(10) DEFAULT 'blue', LformaAlderantzizko varchar(10) DEFAULT 'orange', Zforma varchar(10) DEFAULT 'green', ZformaAlderantzizko varchar(10) DEFAULT 'red', Tforma varchar(10) DEFAULT 'purple', PRIMARY KEY(erabiltzailea));")
         con.commit()
         con.close()
 
@@ -92,13 +92,20 @@ class datuBasea:
             con.close()
             return False
 
-    def partidaGorde(self, erab, zerrenda, partida):
+    def partidaGorde(self, erab, zerrenda, zailtasuna, puntuazioa):
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
-        res = cur.execute("INSERT INTO partida VALUES ('" + erab + "', '" + zerrenda + "', '" + partida + "')")
-        res.fetchall()
-        con.commit()
-        con.close()
+        try:
+            res = cur.execute("INSERT INTO partida VALUES ('" + erab + "', '" + zerrenda + "', '" + zailtasuna + "', '" + puntuazioa + "')")
+            res.fetchall()
+            con.commit()
+            con.close()
+        except sqlite3.IntegrityError:
+            res = cur.execute("UPDATE partida SET zerrenda = '" + zerrenda + "', zailtasuna = '" + zailtasuna + "', puntuazioa = '" + puntuazioa + "' WHERE erabiltzailea =  '" + erab + "'")
+            res.fetchall()
+            con.commit()
+            con.close()
+
 
     def partidaKargatu(self, erabiltzailea):
         con = sqlite3.connect("tetrisJokoa.db")
@@ -113,6 +120,15 @@ class datuBasea:
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
         cur.execute("SELECT zailtasuna FROM partida WHERE erabiltzailea = '" + erabiltzailea + "'")
+        datuak = cur.fetchone()
+        con.commit()
+        con.close()
+        return datuak
+
+    def getPuntuazioa(self, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        cur.execute("SELECT puntuazioa FROM partida WHERE erabiltzailea = '" + erabiltzailea + "'")
         datuak = cur.fetchone()
         con.commit()
         con.close()
@@ -174,3 +190,49 @@ class datuBasea:
             con.close()
         except sqlite3.IntegrityError:
             con.close()
+
+    def pertsonalizazioaSortu(self, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        res = cur.execute("INSERT INTO pertsonalizazioa VALUES('" + erabiltzailea + "', ' ', ' ', 'yellow', ''cyan, 'blue', 'orange', 'green', 'red', 'purple')")
+        res.fetchall()
+        con.commit()
+        con.close()
+
+    def kargatuTableroa(self, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        cur.execute("SELECT zerrenda FROM partida WHERE erabiltzailea = '" + erabiltzailea + "'")
+        datuak = cur.fetchone()
+        con.commit()
+        con.close()
+        return datuak
+
+    def getKolorea(self, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        cur.execute("SELECT atzekoKolorea FROM pertsonalizazioa WHERE erabiltzailea = '" + erabiltzailea + "'")
+        datuak = cur.fetchone()
+        con.commit()
+        con.close()
+        return datuak
+
+    def getMusika(self, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        cur.execute("SELECT musika FROM pertsonalizazioa WHERE erabiltzailea = '" + erabiltzailea + "'")
+        datuak = cur.fetchone()
+        con.commit()
+        con.close()
+        return datuak
+
+    def getAdreiluKolorea(self, adreilua, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        cur.execute("SELECT " + adreilua + " FROM pertsonalizazioa WHERE erabiltzailea = '" + erabiltzailea + "'")
+        datuak = cur.fetchone()
+        con.commit()
+        con.close()
+        return datuak
+
+

@@ -1,5 +1,3 @@
-from model import Piezak
-
 class Tableroa:
 	def __init__(self, zailtasuna):
 		if zailtasuna == 0:
@@ -135,13 +133,11 @@ class Tableroa:
 			x = self.posizioa[0] + self.pieza.get_x(i)
 			y = self.posizioa[1] + self.pieza.get_y(i)
 			tmp_tab[x][y] = self.pieza.get_kolorea()
-		for i in range(10):
-			print()
 		for i in range(self.tamaina[1]):
 			for j in range(self.tamaina[0]):
-				zerrenda.insert(kont, tmp_tab[i][j] if tmp_tab[i][j] else ' ')
+				zerrenda.insert(kont, tmp_tab[i][j] if tmp_tab[i][j] else '0')
 				kont = kont+1
-		return ''.join(zerrenda)
+		return ','.join(zerrenda)
 
 
 

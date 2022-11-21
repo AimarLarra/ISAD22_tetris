@@ -57,6 +57,8 @@ class ErregistroLeioa(object):
                 emaitza = db.erabiltzaileGehitu(entry.get(), entry2.get())
                 if emaitza is False:
                     popupmsg("Erabiltzaile hori existitzen da, beste bat sartu!")
+                #Crear la tabla de pertsonalizazio
+                db.pertsonalizazioaSortu(entry.get())
                 self.window.destroy()
                 hL.HasieraLeioa()
             else:
