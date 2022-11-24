@@ -53,12 +53,14 @@ class ErregistroLeioa(object):
         def clickegin():
             db = datuBasea()
             db.taulaSortu()
+            db.taulaSortuPertsonalizazioa()
             if entry.get() and entry2.get():
                 emaitza = db.erabiltzaileGehitu(entry.get(), entry2.get())
                 if emaitza is False:
                     popupmsg("Erabiltzaile hori existitzen da, beste bat sartu!")
                 #Crear la tabla de pertsonalizazio
-                db.pertsonalizazioaSortu(entry.get())
+                db.initPertsonalizazioa(entry.get())
+                #db.pertsonalizazioaSortu(entry.get())
                 self.window.destroy()
                 hL.HasieraLeioa()
             else:

@@ -4,9 +4,10 @@ import view.DatuakAldatuLeioa as dAL
 import view.HasieraLeioa as hL
 import view.ErabEzabatuLeioa as eEL
 import view.JokatuKargatuLeioa as jKL
-import controller.DatuBasea as dB
+from controller.DatuBasea import datuBasea
 import view.PertsonalizazioLeioa as pL
 from PIL import ImageTk, Image
+from pygame import mixer
 
 
 class MenuLeioa(object):
@@ -17,7 +18,36 @@ class MenuLeioa(object):
         self.window.geometry('220x460')
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
-        datuBasea = dB.datuBasea()
+        db = datuBasea()
+        mixer.init()
+        musika = db.getMusika(db.getUnekoa())
+        print(musika)
+        if musika == "BaxuGogorra":
+            print("hola")
+        if musika == " Klasikoa":
+            print("Klasikoa")
+            mixer.music.load("Irudiak/Klasikoa.mp3")
+            mixer.music.play(loops=-1)
+        if musika == " Kunbia":
+            print("Kunbia")
+            mixer.music.load("Irudiak/Kunbia.mp3")
+            mixer.music.play(loops=-1)
+        if musika == " Regetoia":
+            print("Regetoia")
+            mixer.music.load("Irudiak/Regetoia.mp3")
+            mixer.music.play(loops=-1)
+        if musika == " Metal":
+            print("Metal")
+            mixer.music.load("Irudiak/Metala.mp3")
+            mixer.music.play(loops=-1)
+        if musika == " BaxuGogorra":
+            print("Baxugogor")
+            mixer.music.load("Irudiak/BaxuGogorra.mp3")
+            mixer.music.play(loops=-1)
+        if musika == " Txalaparta":
+            print("Txalaparta")
+            mixer.music.load("Irudiak/Txalaparta.mp3")
+            mixer.music.play(loops=-1)
 
         frame = tk.Frame(self.window, width=1, height=1, bg="black")
         frame.place(x=1, rely=0.01)
@@ -38,7 +68,7 @@ class MenuLeioa(object):
         buttonDatuakAldatu = tk.Button(self.window, text="DATUAK ALDATU", command=self.clickEgin3)
         buttonDatuakAldatu.place(x=15, rely=0.55, width=180)
 
-        if datuBasea.getAdmin(datuBasea.getUnekoa()):
+        if db.getAdmin(db.getUnekoa()):
             buttonErabEzabatu = tk.Button(self.window, text="ERABILTZAILEAK EZABATU", command=self.clickEgin5)
             buttonErabEzabatu.place(x=15, rely=0.80, width=180)
 
@@ -62,7 +92,7 @@ class MenuLeioa(object):
         dAL.DatuakAldatuLeioa()
 
     def clickEgin4(self):
-        db = dB.datuBasea()
+        db = datuBasea()
         db.setUnekoa(db.getUnekoa(), "Ez")
         self.window.destroy()
         hL.HasieraLeioa()

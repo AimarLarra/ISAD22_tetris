@@ -22,7 +22,9 @@ class datuBasea:
     def taulaSortuPertsonalizazioa(self):
         con = sqlite3.connect("tetrisJokoa.db")
         con.execute(
-        "CREATE TABLE if not exists pertsonalizazioa (erabiltzailea varchar(20) NOT NULL, atzekoKolorea varchar(40), musika varchar(20), Laukia varchar(10) DEFAULT 'yellow', Zutabea varchar(10) DEFAULT 'cyan', Lforma varchar(10) DEFAULT 'blue', LformaAlderantzizko varchar(10) DEFAULT 'orange', Zforma varchar(10) DEFAULT 'green', ZformaAlderantzizko varchar(10) DEFAULT 'red', Tforma varchar(10) DEFAULT 'purple', PRIMARY KEY(erabiltzailea));")
+        "CREATE TABLE if not exists pertsonalizazioa (erabiltzailea varchar(20) NOT NULL, atzekoKolorea varchar(40), musika varchar(20), Laukia varchar(20) DEFAULT 'yellow', Zutabea varchar(10) DEFAULT 'cyan', Lforma varchar(10) DEFAULT 'blue', LformaAlderantzizko varchar(10) DEFAULT 'orange', Zforma varchar(10) DEFAULT 'green', ZformaAlderantzizko varchar(10) DEFAULT 'red', Tforma varchar(10) DEFAULT 'purple', PRIMARY KEY(erabiltzailea));")
+        #con.execute(
+        #"CREATE TABLE if not exists pertsonalizazioa (erabiltzailea varchar(20) NOT NULL, atzekoKolorea varchar(40), musika varchar(20), adreilua varchar(20), PRIMARY KEY(erabiltzailea));")
         con.commit()
         con.close()
 
@@ -31,6 +33,20 @@ class datuBasea:
         cur = con.cursor()
         try:
             res = cur.execute("INSERT INTO erregistroa VALUES ('" + erabiltzailea + "', '" + pasahitza + "', 'Ez', 'Ez')")
+            res.fetchall()
+            con.commit()
+            con.close()
+            return True
+        except sqlite3.IntegrityError:
+            con.close()
+            return False
+
+    def initPertsonalizazioa(self, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        try:
+            res = cur.execute(
+                "INSERT INTO pertsonalizazioa VALUES ('" + erabiltzailea + "', ' Beltza', '', ' Horia', ' Zian', ' Urdina', ' Laranja', ' Berdea', ' Gorria', ' Morea')")
             res.fetchall()
             con.commit()
             con.close()
@@ -180,11 +196,35 @@ class datuBasea:
             con.close()
 
     def pertsonalizazioaEguneratu(self, kolorea, musika, adreilua, adrKolorea, erabiltzailea):
+        print(kolorea)
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
         try:
-            res = cur.execute(
-                "UPDATE pertsonalizazioa SET kolorea = '" + kolorea + "', musika = '" + musika + "', " + adreilua + " = '" + adrKolorea + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
+            print(adreilua)
+            if adreilua==" Zforma":
+                res = cur.execute(
+                "UPDATE pertsonalizazioa SET atzekoKolorea = '" + kolorea + "', musika = '" + musika + "', Zforma = '" + adrKolorea + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
+            elif adreilua == " ZformaAlderantzizko":
+                res = cur.execute(
+                "UPDATE pertsonalizazioa SET atzekoKolorea = '" + kolorea + "', musika = '" + musika + "', ZformaAlderantzizko = '" + adrKolorea + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
+            elif adreilua==" Lforma":
+                res = cur.execute(
+                "UPDATE pertsonalizazioa SET atzekoKolorea = '" + kolorea + "', musika = '" + musika + "', Lforma = '" + adrKolorea + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
+            elif adreilua==" LformaAlderantzizko":
+                res = cur.execute(
+                "UPDATE pertsonalizazioa SET atzekoKolorea = '" + kolorea + "', musika = '" + musika + "', LformaAlderantzizko = '" + adrKolorea + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
+            elif adreilua==" Laukia":
+                res = cur.execute(
+                "UPDATE pertsonalizazioa SET atzekoKolorea = '" + kolorea + "', musika = '" + musika + "', Laukia = '" + adrKolorea + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
+            elif adreilua==" Zutabea":
+                res = cur.execute(
+                "UPDATE pertsonalizazioa SET atzekoKolorea = '" + kolorea + "', musika = '" + musika + "', Zutabea = '" + adrKolorea + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
+            elif adreilua==" Tforma":
+                res = cur.execute(
+                "UPDATE pertsonalizazioa SET atzekoKolorea = '" + kolorea + "', musika = '" + musika + "', Tforma = '" + adrKolorea + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
+            else:
+                con.close()
+                return
             res.fetchall()
             con.commit()
             con.close()
@@ -194,7 +234,7 @@ class datuBasea:
     def pertsonalizazioaSortu(self, erabiltzailea):
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
-        res = cur.execute("INSERT INTO pertsonalizazioa VALUES('" + erabiltzailea + "', ' ', ' ', 'yellow', ''cyan, 'blue', 'orange', 'green', 'red', 'purple')")
+        res = cur.execute("INSERT INTO pertsonalizazioa VALUES('" + erabiltzailea + "', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ')")
         res.fetchall()
         con.commit()
         con.close()
@@ -215,7 +255,10 @@ class datuBasea:
         datuak = cur.fetchone()
         con.commit()
         con.close()
-        return datuak
+        if datuak:
+            return ''.join(datuak)
+        else:
+            return ''
 
     def getMusika(self, erabiltzailea):
         con = sqlite3.connect("tetrisJokoa.db")
@@ -224,7 +267,10 @@ class datuBasea:
         datuak = cur.fetchone()
         con.commit()
         con.close()
-        return datuak
+        if datuak:
+            return ''.join(datuak)
+        else:
+            return ''
 
     def getAdreiluKolorea(self, adreilua, erabiltzailea):
         con = sqlite3.connect("tetrisJokoa.db")
@@ -233,6 +279,9 @@ class datuBasea:
         datuak = cur.fetchone()
         con.commit()
         con.close()
-        return datuak
+        if datuak:
+            return ''.join(datuak)
+        else:
+            return ''
 
 

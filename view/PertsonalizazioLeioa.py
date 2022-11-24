@@ -4,6 +4,8 @@ from tkinter import ttk
 import controller.DatuBasea as dB
 import view.MenuLeioa as mL
 from PIL import Image, ImageTk
+from pygame import mixer
+from controller.DatuBasea import datuBasea
 
 
 class PertsonalizazioLeioa(object):
@@ -32,7 +34,7 @@ class PertsonalizazioLeioa(object):
                                 ' Gorria',
                                 ' Horia',
                                 ' Berdea',
-                                ' Arrosa',
+                                ' Larrosa',
                                 ' Laranja',
                                 ' Morea',)
         boxKolorea.place(x=20, rely=0.20, width=180)
@@ -45,7 +47,7 @@ class PertsonalizazioLeioa(object):
                                ' Regetoia',
                                ' Metala',
                                ' BaxuGogorra',
-                               ' EstiloGogorra')
+                               ' Txalaparta')
         boxMusika.place(x=20, rely=0.35, width=180)
 
         tk.Label(text="Aukeratu adreilua", bg="black", fg="white").place(x=17, rely=0.45)
@@ -56,7 +58,7 @@ class PertsonalizazioLeioa(object):
                                  ' Zforma',
                                  ' ZformaAlderantzizko',
                                  ' Zutabea',
-                                 ' LaukiForma',
+                                 ' Laukia',
                                  ' Tforma')
         boxAdreilua.place(x=17, rely=0.50, width=180)
 
@@ -69,19 +71,42 @@ class PertsonalizazioLeioa(object):
                                   ' Gorria',
                                   ' Horia',
                                   ' Berdea',
-                                  ' Arrosa',
+                                  ' Larrosa',
                                   ' Laranja',
                                   ' Morea',)
         boxAdrKolore.place(x=17, rely=0.65, width=180)
 
+
+
         def clickEgin1():
             # no se va a cerrar cada vez que le demos a guardar.
-            db = dB.datuBasea()
+            db = datuBasea()
+            db.taulaSortuPertsonalizazioa()
+            #db.pertsonalizazioaSortu(db.getUnekoa())
+            mixer.init()
             db.pertsonalizazioaEguneratu(boxKolorea.get(), boxMusika.get(), boxAdreilua.get(), boxAdrKolore.get(), db.getUnekoa())
-            boxKolorea.set('')
-            boxMusika.set('')
-            boxAdreilua.set('')
-            boxAdreilua.set('')
+            label = tk.Label(text="Zure pertsonalizazioa gorde da", fg="white", bg="black").place(x=20, rely=0.7)
+            # para el menu (musika=datuBasea.getMusika())
+            #musika = db.getMusika(db.getUnekoa())
+            musika=boxMusika.get()
+            if musika==' Klasikoa':
+                mixer.music.load("Irudiak/Klasikoa.mp3")
+                mixer.music.play(loops=1)
+            if musika==' Kunbia':
+                mixer.music.load("Irudiak/Kunbia.mp3")
+                mixer.music.play(loops=1)
+            if musika == ' Regetoia':
+                mixer.music.load("Irudiak/Regetoia.mp3")
+                mixer.music.play(loops=1)
+            if musika == ' Metala':
+                mixer.music.load("Irudiak/Metala.mp3")
+                mixer.music.play(loops=1)
+            if musika == ' BaxuGogorra':
+                mixer.music.load("Irudiak/BaxuGogorra.mp3")
+                mixer.music.play(loops=1)
+            if musika ==' Txalaparta':
+                mixer.music.load("Irudiak/Txalaparta.mp3")
+                mixer.music.play(loops=1)
 
         def clickEgin2():
             self.window.destroy()
@@ -93,3 +118,4 @@ class PertsonalizazioLeioa(object):
         buttonItzuli = tk.Button(self.window, text="ITZULI", command=clickEgin2)
         buttonItzuli.place(x=15, rely=0.90, width=50)
         self.window.mainloop()
+

@@ -15,6 +15,8 @@ class SaioHasiLeioa(object):
         self.window.geometry('220x460')
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
+        db = datuBasea()
+        db.taulaSortuPertsonalizazioa()
 
         frame = tk.Frame(self.window, width=1, height=1, bg="black")
         frame.place(x=1, rely=0.01)

@@ -4,7 +4,6 @@ import view.ErregistroLeioa as eL
 from view.SaioHasiLeioa import SaioHasiLeioa
 from PIL import Image, ImageTk
 
-
 class HasieraLeioa(object):
 
     def __init__(self):
@@ -13,6 +12,7 @@ class HasieraLeioa(object):
         self.window.geometry('220x460')
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
+
 
         frame = tk.Frame(self.window, width=1, height=20, bg="black")
         frame.place(x=12, rely=0.10)

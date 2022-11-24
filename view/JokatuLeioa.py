@@ -11,22 +11,44 @@ tablerogordeta = []
 
 class JokatuLeioa(object):
 	"""docstring for JokatuLeioa"""
-	
+
 	def __init__(self, pZailtasuna):
+		db = datuBasea()
+		atzekoKolorea = db.getKolorea(db.getUnekoa())
+		print(atzekoKolorea)
+		if atzekoKolorea == ' Gorria':
+			atzekoKolorea = "Red"
+		elif atzekoKolorea == ' Horia':
+			atzekoKolorea = "Yellow"
+		elif atzekoKolorea == ' Morea':
+			atzekoKolorea = "Purple"
+		elif atzekoKolorea == ' Larrosa':
+			atzekoKolorea = "Pink"
+		elif atzekoKolorea == ' Urdina':
+			atzekoKolorea = "Blue"
+		elif atzekoKolorea == ' Zuria':
+			atzekoKolorea ="White"
+		elif atzekoKolorea == ' Berdea':
+			atzekoKolorea = "Green"
+		elif atzekoKolorea == ' Laranja':
+			atzekoKolorea = "Orange"
+		else:
+			atzekoKolorea = "Black"
+		print(atzekoKolorea)
 		super(JokatuLeioa, self).__init__()
 		self.window = tk.Tk()
 		self.window.geometry('260x520')
 		self.window.title("Tetris jokoa")
-		self.window.config(bg="black")
+		self.window.config(bg=atzekoKolorea)
 
-		frame = tk.Frame(self.window, width=1, height=1, bg="black")
+		frame = tk.Frame(self.window, width=1, height=1, bg=atzekoKolorea)
 		frame.place(x=1, rely=0.01)
 
 		img = Image.open("Irudiak/tetris-logo.png")
 		resize_img = img.resize((60, 40))
 		img = ImageTk.PhotoImage(resize_img)
 
-		label = tk.Label(frame, image=img, fg="black", bg="black", width=80, height=60)
+		label = tk.Label(frame, image=img, fg=atzekoKolorea, bg=atzekoKolorea, width=80, height=60)
 		label.pack()
 
 		button = tk.Button(self.window, text="Partida hasi")
