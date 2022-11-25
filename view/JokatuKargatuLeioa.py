@@ -29,10 +29,12 @@ class JokatuKargatuLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
-        jL.JokatuLeioa(1)
+        jL.JokatuLeioa(1, False, (10, 20))
 
     def clickEgin2(self):
         db = datuBasea()
         zailtasuna = db.getZailtasuna(db.getUnekoa())
+        tam0 = db.getTamaina0(db.getUnekoa())
+        tam1 = db.getTamaina1(db.getUnekoa())
         self.window.destroy()
-        jL.JokatuLeioa(zailtasuna).partida_jarraitu()
+        jL.JokatuLeioa(zailtasuna[0], True, (tam0[0], tam1[0]))

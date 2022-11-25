@@ -33,13 +33,13 @@ class ZailtasunLeioa(object):
 
     def clickEgin1(self):
         self.window.destroy()
-        jL.JokatuLeioa(0)
+        jL.JokatuLeioa(0, False, (11, 22))
 
 
     def clickEgin2(self):
         self.window.destroy()
-        jL.JokatuLeioa(1)
+        jL.JokatuLeioa(1, False, (10, 20))
 
     def clickEgin3(self):
         self.window.destroy()
-        jL.JokatuLeioa(2)
+        jL.JokatuLeioa(2, False, (9, 18))

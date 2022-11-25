@@ -3,12 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1d9505f1-d0df-45bc-8db6-b4eb4e9859a2" name="Changes" comment="Admin, unekoa datu basean sartuta, datu base eguneratua, pertsonalizazioLeioa sartuta, implementatzea falta.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ISAD22_tetris.rar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/DatuBasea.py" beforeDir="false" afterPath="$PROJECT_DIR$/controller/DatuBasea.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/Tableroa.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/Tableroa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetrisJokoa.db" beforeDir="false" afterPath="$PROJECT_DIR$/tetrisJokoa.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/ErregistroLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/ErregistroLeioa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetrisJokoa.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/JokatuKargatuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/JokatuKargatuLeioa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/JokatuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/JokatuLeioa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/PertsonalizazioLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/PertsonalizazioLeioa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/ZailtasunLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/ZailtasunLeioa.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +25,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -44,6 +45,34 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\eneko\PycharmProjects\ISAD22_tetris\Controller" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ISAD22_tetris" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -131,8 +160,18 @@
       <option name="project" value="LOCAL" />
       <updated>1667843479459</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Admin, unekoa datu basean sartuta, datu base eguneratua, pertsonalizazioLeioa sartuta, implementatzea falta.">
+      <created>1669027688763</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1669027688763</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.rar" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

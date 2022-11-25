@@ -6,16 +6,14 @@ from PIL import Image, ImageTk
 import view.MenuLeioa as mL
 from controller.DatuBasea import datuBasea
 import pickle
-tablerogordeta = []
 
 
 class JokatuLeioa(object):
 	"""docstring for JokatuLeioa"""
 
-	def __init__(self, pZailtasuna):
+	def __init__(self, pZailtasuna, partidaJarraitu, tamaina):
 		db = datuBasea()
 		atzekoKolorea = db.getKolorea(db.getUnekoa())
-		print(atzekoKolorea)
 		if atzekoKolorea == ' Gorria':
 			atzekoKolorea = "Red"
 		elif atzekoKolorea == ' Horia':
@@ -27,17 +25,16 @@ class JokatuLeioa(object):
 		elif atzekoKolorea == ' Urdina':
 			atzekoKolorea = "Blue"
 		elif atzekoKolorea == ' Zuria':
-			atzekoKolorea ="White"
+			atzekoKolorea = "White"
 		elif atzekoKolorea == ' Berdea':
 			atzekoKolorea = "Green"
 		elif atzekoKolorea == ' Laranja':
 			atzekoKolorea = "Orange"
 		else:
 			atzekoKolorea = "Black"
-		print(atzekoKolorea)
 		super(JokatuLeioa, self).__init__()
 		self.window = tk.Tk()
-		self.window.geometry('260x520')
+		self.window.geometry('260x600')
 		self.window.title("Tetris jokoa")
 		self.window.config(bg=atzekoKolorea)
 
@@ -70,7 +67,7 @@ class JokatuLeioa(object):
 		puntuazioalabel = tk.Label(self.window, textvariable=puntuazioa)
 		puntuazioalabel.pack()
 
-		canvas = TableroaPanela(master=self.window, puntuazioalabel=puntuazioa, zailtasuna=pZailtasuna)
+		canvas = TableroaPanela(master=self.window, puntuazioalabel=puntuazioa, zailtasuna=pZailtasuna, parJarraitu=partidaJarraitu, tamaina=tamaina)
 		button.configure(command=canvas.jolastu)
 		buttonGorde.configure(command=canvas.partidaGorde)
 		canvas.pack()
@@ -81,31 +78,19 @@ class JokatuLeioa(object):
 
 		self.window.mainloop()
 
-	def partida_jarraitu(self):
-		global tablerogordeta
-		db = datuBasea()
-		puntuazioa = db.getPuntuazioa(db.getUnekoa())
-		partidaZerrenda = db.partidaKargatu(db.getUnekoa())
-		partida = pickle.loads(partidaZerrenda[0])
-		tablerogordeta = partida
-		tamaina = db.getZailtasuna(db.getUnekoa())
-		JokatuLeioa(tamaina)
 
 class TableroaPanela(tk.Frame):
 
-	def __init__(self, gelazka_tamaina=20, puntuazioalabel=None, master=None, zailtasuna=None):
+	def __init__(self, gelazka_tamaina=20, puntuazioalabel=None, master=None, zailtasuna=None, parJarraitu=None, tamaina=None):
 		tk.Frame.__init__(self, master)
+		self.tamaina = tamaina
 		self.puntuazio_panela = puntuazioalabel
-		if zailtasuna == 0:
-			self.tamaina = (11, 22)
-		elif zailtasuna == 1:
-			self.tamaina = (10, 20)
-		elif zailtasuna == 2:
-			self.tamaina = (9, 18)
+		self.partidaJarraitu = parJarraitu
 
 		self.gelazka_tamaina = gelazka_tamaina
 		self.zailtasuna = zailtasuna
 
+		print(self.zailtasuna)
 		self.canvas = tk.Canvas(
 			width=self.tamaina[0] * self.gelazka_tamaina+1,
 			height=self.tamaina[1] * self.gelazka_tamaina+1,
@@ -113,7 +98,9 @@ class TableroaPanela(tk.Frame):
 		)
 		self.canvas.pack(expand=tk.YES, fill=None)
 
-		self.tab = Tableroa(zailtasuna)
+		self.tab = Tableroa(self.partidaJarraitu, self.tamaina)
+		if self.partidaJarraitu:
+			self.jolastu()
 		self.jokatzen = None
 		self.tableroa_ezabatu()
 
@@ -179,9 +166,10 @@ class TableroaPanela(tk.Frame):
 			self.marraztu_tableroa()
 
 	def jolastu(self):
-		if self.jokatzen:
-			self.after_cancel(self.jokatzen)
-		self.tab.hasieratu_tableroa()
+		if not self.partidaJarraitu:
+			if self.jokatzen:
+				self.after_cancel(self.jokatzen)
+			self.tab.hasieratu_tableroa()
 		pieza_posibleak = [Laukia, Zutabea, Lforma, LformaAlderantzizko, Zforma, ZformaAlderantzizko, Tforma]
 		self.tab.sartu_pieza(random.choice(pieza_posibleak)())
 		self.marraztu_tableroa()
@@ -195,15 +183,15 @@ class TableroaPanela(tk.Frame):
 	def partidaGorde(self):
 		if self.jokatzen:
 			self.after_cancel(self.jokatzen)
-			gordetakoPartida = [[ None for x in range(self.tamaina[0])]for y in range(self.tamaina[1])]
+			gordetakoPartida = [[None for x in range(self.tab.tamaina[0])]for y in range(self.tab.tamaina[1])]
 			for i in range(self.tab.tamaina[1]):
-				print("i", i)
 				for j in range(self.tab.tamaina[0]):
-					print("j", j)
 					if self.tab.tab[i][j] is not None:
 						gordetakoPartida[i][j] = self.tab.tab[i][j]
 			zerrenda = pickle.dumps(gordetakoPartida)
 			puntuaziopartida = self.tab.puntuazioa
 			db = datuBasea()
 			db.taulaSortuPartida()
-			db.partidaGorde(db.getUnekoa(), zerrenda, str(self.zailtasuna), puntuaziopartida)
+			db.partidaGorde(db.getUnekoa(), zerrenda, str(self.zailtasuna), puntuaziopartida, self.tab.tamaina[0], self.tab.tamaina[1])
+			self.master.destroy()
+			mL.MenuLeioa()
