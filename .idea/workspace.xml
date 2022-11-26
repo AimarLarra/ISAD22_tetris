@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1d9505f1-d0df-45bc-8db6-b4eb4e9859a2" name="Changes" comment="Admin, unekoa datu basean sartuta, datu base eguneratua, pertsonalizazioLeioa sartuta, implementatzea falta.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ISAD22_tetris.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/DatuBasea.py" beforeDir="false" afterPath="$PROJECT_DIR$/controller/DatuBasea.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Tableroa.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/Tableroa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetrisJokoa.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/JokatuKargatuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/JokatuKargatuLeioa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/JokatuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/JokatuLeioa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/ZailtasunLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/ZailtasunLeioa.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669027688763</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Admin, unekoa datu basean sartuta, datu base eguneratua, pertsonalizazioLeioa sartuta, implementatzea falta.">
+      <created>1669385739860</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1669385739860</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="UnknownFeatures">

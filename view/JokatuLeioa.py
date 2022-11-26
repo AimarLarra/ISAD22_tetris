@@ -86,11 +86,13 @@ class TableroaPanela(tk.Frame):
 		self.tamaina = tamaina
 		self.puntuazio_panela = puntuazioalabel
 		self.partidaJarraitu = parJarraitu
-
 		self.gelazka_tamaina = gelazka_tamaina
 		self.zailtasuna = zailtasuna
+		db = datuBasea()
+		zailtasunadb = db.getZailtasuna(db.getUnekoa())
+		if zailtasunadb is not None:
+			self.zailtasuna = zailtasunadb[0]
 
-		print(self.zailtasuna)
 		self.canvas = tk.Canvas(
 			width=self.tamaina[0] * self.gelazka_tamaina+1,
 			height=self.tamaina[1] * self.gelazka_tamaina+1,
@@ -138,11 +140,15 @@ class TableroaPanela(tk.Frame):
 				print("GAMEOVER")
 				self.tab.hasieratu_tableroa()
 				return
-		if self.zailtasuna == 0:
+		print("zailtasuna pausu taulan.")
+		if self.tamaina[0] == 11:
 			self.jokatzen = self.after(400, self.pausu_bat)
-		elif self.zailtasuna == 1:
+			print("erraza2")
+		elif self.tamaina[0] == 10:
+			print("ertaina2")
 			self.jokatzen = self.after(200, self.pausu_bat)
 		else:
+			print("zaila2")
 			self.jokatzen = self.after(100, self.pausu_bat)
 		self.marraztu_tableroa()
 
@@ -173,11 +179,15 @@ class TableroaPanela(tk.Frame):
 		pieza_posibleak = [Laukia, Zutabea, Lforma, LformaAlderantzizko, Zforma, ZformaAlderantzizko, Tforma]
 		self.tab.sartu_pieza(random.choice(pieza_posibleak)())
 		self.marraztu_tableroa()
-		if self.zailtasuna == 0:
+		print(" zailtasuna jolastu taulan.")
+		if self.tamaina[0] == 11:
 			self.jokatzen = self.after(400, self.pausu_bat)
-		elif self.zailtasuna == 1:
+			print("erraza")
+		elif self.tamaina[0] == 10:
+			print("ertaina")
 			self.jokatzen = self.after(200, self.pausu_bat)
 		else:
+			print("zaila")
 			self.jokatzen = self.after(100, self.pausu_bat)
 
 	def partidaGorde(self):
