@@ -6,6 +6,7 @@ from PIL import Image, ImageTk
 import view.MenuLeioa as mL
 from controller.DatuBasea import datuBasea
 import pickle
+from pygame import mixer
 
 
 class JokatuLeioa(object):
@@ -13,6 +14,27 @@ class JokatuLeioa(object):
 
 	def __init__(self, pZailtasuna, partidaJarraitu, tamaina):
 		db = datuBasea()
+		mixer.init()
+		musika = db.getMusika(db.getUnekoa())
+		if musika == " Klasikoa":
+			mixer.music.load("media/Klasikoa.mp3")
+			mixer.music.play(loops=-1)
+		if musika == " Kunbia":
+			mixer.music.load("media/Kunbia.mp3")
+			mixer.music.play(loops=-1)
+		if musika == " Zulagailua":
+			mixer.music.load("media/Zulagailua.mp3")
+			mixer.music.play(loops=-1)
+		if musika == " Metala":
+			mixer.music.load("media/Metala.mp3")
+			mixer.music.play(loops=-1)
+		if musika == " BaxuGogorra":
+			mixer.music.load("media/BaxuGogorra.mp3")
+			mixer.music.play(loops=-1)
+		if musika == " Txalaparta":
+			mixer.music.load("media/Txalaparta.mp3")
+			mixer.music.play(loops=-1)
+
 		atzekoKolorea = db.getKolorea(db.getUnekoa())
 		if atzekoKolorea == ' Gorria':
 			atzekoKolorea = "Red"
@@ -41,7 +63,7 @@ class JokatuLeioa(object):
 		frame = tk.Frame(self.window, width=1, height=1, bg=atzekoKolorea)
 		frame.place(x=1, rely=0.01)
 
-		img = Image.open("Irudiak/tetris-logo.png")
+		img = Image.open("media/tetris-logo.png")
 		resize_img = img.resize((60, 40))
 		img = ImageTk.PhotoImage(resize_img)
 
@@ -89,6 +111,7 @@ class TableroaPanela(tk.Frame):
 		self.gelazka_tamaina = gelazka_tamaina
 		self.zailtasuna = zailtasuna
 		db = datuBasea()
+		db.taulaSortuPartida()
 		zailtasunadb = db.getZailtasuna(db.getUnekoa())
 		if zailtasunadb is not None:
 			self.zailtasuna = zailtasunadb[0]
@@ -140,15 +163,11 @@ class TableroaPanela(tk.Frame):
 				print("GAMEOVER")
 				self.tab.hasieratu_tableroa()
 				return
-		print("zailtasuna pausu taulan.")
 		if self.tamaina[0] == 11:
 			self.jokatzen = self.after(400, self.pausu_bat)
-			print("erraza2")
 		elif self.tamaina[0] == 10:
-			print("ertaina2")
 			self.jokatzen = self.after(200, self.pausu_bat)
 		else:
-			print("zaila2")
 			self.jokatzen = self.after(100, self.pausu_bat)
 		self.marraztu_tableroa()
 
@@ -179,15 +198,11 @@ class TableroaPanela(tk.Frame):
 		pieza_posibleak = [Laukia, Zutabea, Lforma, LformaAlderantzizko, Zforma, ZformaAlderantzizko, Tforma]
 		self.tab.sartu_pieza(random.choice(pieza_posibleak)())
 		self.marraztu_tableroa()
-		print(" zailtasuna jolastu taulan.")
 		if self.tamaina[0] == 11:
 			self.jokatzen = self.after(400, self.pausu_bat)
-			print("erraza")
 		elif self.tamaina[0] == 10:
-			print("ertaina")
 			self.jokatzen = self.after(200, self.pausu_bat)
 		else:
-			print("zaila")
 			self.jokatzen = self.after(100, self.pausu_bat)
 
 	def partidaGorde(self):

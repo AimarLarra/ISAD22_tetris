@@ -7,51 +7,22 @@ import view.JokatuKargatuLeioa as jKL
 from controller.DatuBasea import datuBasea
 import view.PertsonalizazioLeioa as pL
 from PIL import ImageTk, Image
-from pygame import mixer
+
 
 
 class MenuLeioa(object):
 
     def __init__(self):
+        db = datuBasea()
         super(MenuLeioa, self).__init__()
         self.window = tk.Tk()
         self.window.geometry('220x460')
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
-        db = datuBasea()
-        mixer.init()
-        musika = db.getMusika(db.getUnekoa())
-        print(musika)
-        if musika == "BaxuGogorra":
-            print("hola")
-        if musika == " Klasikoa":
-            print("Klasikoa")
-            mixer.music.load("Irudiak/Klasikoa.mp3")
-            mixer.music.play(loops=-1)
-        if musika == " Kunbia":
-            print("Kunbia")
-            mixer.music.load("Irudiak/Kunbia.mp3")
-            mixer.music.play(loops=-1)
-        if musika == " Regetoia":
-            print("Regetoia")
-            mixer.music.load("Irudiak/Regetoia.mp3")
-            mixer.music.play(loops=-1)
-        if musika == " Metal":
-            print("Metal")
-            mixer.music.load("Irudiak/Metala.mp3")
-            mixer.music.play(loops=-1)
-        if musika == " BaxuGogorra":
-            print("Baxugogor")
-            mixer.music.load("Irudiak/BaxuGogorra.mp3")
-            mixer.music.play(loops=-1)
-        if musika == " Txalaparta":
-            print("Txalaparta")
-            mixer.music.load("Irudiak/Txalaparta.mp3")
-            mixer.music.play(loops=-1)
 
         frame = tk.Frame(self.window, width=1, height=1, bg="black")
         frame.place(x=1, rely=0.01)
-        img = Image.open("Irudiak/tetris-logo.png")
+        img = Image.open("media/tetris-logo.png")
         resize_img = img.resize((60, 40))
         img = ImageTk.PhotoImage(resize_img)
         label = tk.Label(frame, image=img, fg="black", bg="black", width=80, height=60)

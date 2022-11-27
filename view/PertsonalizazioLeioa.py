@@ -19,7 +19,7 @@ class PertsonalizazioLeioa(object):
 
         frame = tk.Frame(self.window, width=1, height=1, bg="black")
         frame.place(x=1, rely=0.01)
-        img = Image.open("Irudiak/tetris-logo.png")
+        img = Image.open("media/tetris-logo.png")
         resize_img = img.resize((60, 40))
         img = ImageTk.PhotoImage(resize_img)
         label = tk.Label(frame, image=img, fg="black", bg="black", width=80, height=60)
@@ -44,7 +44,7 @@ class PertsonalizazioLeioa(object):
         boxMusika = ttk.Combobox(self.window, state="readonly", textvariable=tk.StringVar())
         boxMusika['values'] = (' Klasikoa',
                                ' Kunbia',
-                               ' Regetoia',
+                               ' Zulagailua',
                                ' Metala',
                                ' BaxuGogorra',
                                ' Txalaparta')
@@ -73,7 +73,8 @@ class PertsonalizazioLeioa(object):
                                   ' Berdea',
                                   ' Larrosa',
                                   ' Laranja',
-                                  ' Morea',)
+                                  ' Morea',
+                                  ' Zian')
         boxAdrKolore.place(x=17, rely=0.65, width=180)
 
 
@@ -82,30 +83,27 @@ class PertsonalizazioLeioa(object):
             # no se va a cerrar cada vez que le demos a guardar.
             db = datuBasea()
             db.taulaSortuPertsonalizazioa()
-            #db.pertsonalizazioaSortu(db.getUnekoa())
             mixer.init()
             db.pertsonalizazioaEguneratu(boxKolorea.get(), boxMusika.get(), boxAdreilua.get(), boxAdrKolore.get(), db.getUnekoa())
             label = tk.Label(text="Zure pertsonalizazioa gorde da", fg="white", bg="black").place(x=20, rely=0.7)
-            # para el menu (musika=datuBasea.getMusika())
-            #musika = db.getMusika(db.getUnekoa())
             musika=boxMusika.get()
             if musika==' Klasikoa':
-                mixer.music.load("Irudiak/Klasikoa.mp3")
+                mixer.music.load("media/Klasikoa.mp3")
                 mixer.music.play(loops=1)
             if musika==' Kunbia':
-                mixer.music.load("Irudiak/Kunbia.mp3")
+                mixer.music.load("media/Kunbia.mp3")
                 mixer.music.play(loops=1)
-            if musika == ' Regetoia':
-                mixer.music.load("Irudiak/Regetoia.mp3")
+            if musika == ' Zulagailua':
+                mixer.music.load("media/Zulagailua.mp3")
                 mixer.music.play(loops=1)
             if musika == ' Metala':
-                mixer.music.load("Irudiak/Metala.mp3")
+                mixer.music.load("media/Metala.mp3")
                 mixer.music.play(loops=1)
             if musika == ' BaxuGogorra':
-                mixer.music.load("Irudiak/BaxuGogorra.mp3")
+                mixer.music.load("media/BaxuGogorra.mp3")
                 mixer.music.play(loops=1)
             if musika ==' Txalaparta':
-                mixer.music.load("Irudiak/Txalaparta.mp3")
+                mixer.music.load("media/Txalaparta.mp3")
                 mixer.music.play(loops=1)
 
         def clickEgin2():

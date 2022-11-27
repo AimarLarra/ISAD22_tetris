@@ -242,8 +242,8 @@ class datuBasea:
                 res = cur.execute(
                 "UPDATE pertsonalizazioa SET atzekoKolorea = '" + kolorea + "', musika = '" + musika + "', Tforma = '" + adrKolorea + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
             else:
-                con.close()
-                return
+                res = cur.execute(
+                "UPDATE pertsonalizazioa SET atzekoKolorea = '" + kolorea + "', musika = '" + musika + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
             res.fetchall()
             con.commit()
             con.close()

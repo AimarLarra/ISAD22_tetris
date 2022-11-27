@@ -21,7 +21,7 @@ class SaioHasiLeioa(object):
         frame = tk.Frame(self.window, width=1, height=1, bg="black")
         frame.place(x=1, rely=0.01)
 
-        img = Image.open("Irudiak/tetris-logo.png")
+        img = Image.open("media/tetris-logo.png")
         resize_img = img.resize((60, 40))
         img = ImageTk.PhotoImage(resize_img)
 

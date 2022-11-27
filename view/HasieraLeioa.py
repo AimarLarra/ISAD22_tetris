@@ -17,7 +17,7 @@ class HasieraLeioa(object):
         frame = tk.Frame(self.window, width=1, height=20, bg="black")
         frame.place(x=12, rely=0.10)
 
-        img = Image.open("Irudiak/tetris-logo.png")
+        img = Image.open("media/tetris-logo.png")
         resize_img = img.resize((140, 100))
         img = ImageTk.PhotoImage(resize_img)
 
