@@ -26,6 +26,13 @@ class datuBasea:
         con.commit()
         con.close()
 
+    def taulaSortuRanking(self):
+        con = sqlite3.connect("tetrisJokoa.db")
+        con.execute(
+            "CREATE TABLE if not exists ranking (id MEDIUMINT NOT NULL, erabiltzailea varchar(20) NOT NULL, puntuazioa int(10), zailtasuna varchar(10), PRIMARY KEY(id), FOREIGN KEY(id) REFERENCES erregistroa(erabiltzailea) ON DELETE CASCADE;")
+        con.commit()
+        con.close()
+
     def erabiltzaileGehitu(self, erabiltzailea, pasahitza):
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
@@ -294,4 +301,31 @@ class datuBasea:
         else:
             return ''
 
+    def gordeRanking(self, erabiltzailea, id, zailtasuna, puntuazioa):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        try:
+            res = cur.execute("UPDATE ranking SET id = '" + id + "', zailtasuna = '" + zailtasuna + "', puntuazioa = '" + puntuazioa + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
+            res.fetchall()
+            con.commit()
+            con.close()
+        except sqlite3.IntegrityError:
+            con.close()
 
+    def getRankingPertsonala(self, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        cur.execute("SELECT * FROM ranking WHERE erabiltzailea = '" + erabiltzailea + "' ORDER BY puntuazioa ASC")
+        datuak = cur.fetchall()
+        con.commit()
+        con.close()
+        return datuak
+
+    def getRankingGlobala(self):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        cur.execute("SELECT * FROM ranking ORDER BY puntuazioa ASC")
+        datuak = cur.fetchall()
+        con.commit()
+        con.close()
+        return datuak
