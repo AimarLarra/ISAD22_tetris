@@ -160,6 +160,14 @@ class TableroaPanela(tk.Frame):
 				pieza_posibleak = [Laukia, Zutabea, Lforma, LformaAlderantzizko, Zforma, ZformaAlderantzizko, Tforma]
 				self.tab.sartu_pieza(random.choice(pieza_posibleak)())
 			except Exception as e:
+				db = datuBasea()
+				db.taulaSortuRanking()
+				id = db.getNextId(db.getUnekoa())
+				print(id)
+				if id[0] is None:
+					db.gordeRanking(db.getUnekoa(), str(1), str(self.zailtasuna), str(self.tab.puntuazioa))
+				else:
+					db.gordeRanking(db.getUnekoa(), str(id[0]+1), str(self.zailtasuna), str(self.tab.puntuazioa))
 				print("GAMEOVER")
 				self.tab.hasieratu_tableroa()
 				return

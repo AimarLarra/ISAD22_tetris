@@ -29,7 +29,7 @@ class datuBasea:
     def taulaSortuRanking(self):
         con = sqlite3.connect("tetrisJokoa.db")
         con.execute(
-            "CREATE TABLE if not exists ranking (id MEDIUMINT NOT NULL, erabiltzailea varchar(20) NOT NULL, puntuazioa int(10), zailtasuna varchar(10), PRIMARY KEY(id), FOREIGN KEY(id) REFERENCES erregistroa(erabiltzailea) ON DELETE CASCADE;")
+            "CREATE TABLE if not exists ranking (id int NOT NULL, erabiltzailea varchar(20) NOT NULL, puntuazioa int(10), zailtasuna varchar(10), PRIMARY KEY(id, erabiltzailea), FOREIGN KEY(id) REFERENCES erregistroa(erabiltzailea) ON DELETE CASCADE);")
         con.commit()
         con.close()
 
@@ -305,7 +305,7 @@ class datuBasea:
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
         try:
-            res = cur.execute("UPDATE ranking SET id = '" + id + "', zailtasuna = '" + zailtasuna + "', puntuazioa = '" + puntuazioa + "' WHERE erabiltzailea = '" + erabiltzailea + "'")
+            res = cur.execute("INSERT INTO ranking VALUES ('" + id + "', '" + erabiltzailea + "', '" + puntuazioa + "', '" + zailtasuna + "')")
             res.fetchall()
             con.commit()
             con.close()
@@ -326,6 +326,15 @@ class datuBasea:
         cur = con.cursor()
         cur.execute("SELECT * FROM ranking ORDER BY puntuazioa ASC")
         datuak = cur.fetchall()
+        con.commit()
+        con.close()
+        return datuak
+
+    def getNextId(self, erabiltzailea):
+        con = sqlite3.connect("tetrisJokoa.db")
+        cur = con.cursor()
+        cur.execute("SELECT MAX(id) FROM ranking WHERE erabiltzailea = '" + erabiltzailea + "'")
+        datuak = cur.fetchone()
         con.commit()
         con.close()
         return datuak
