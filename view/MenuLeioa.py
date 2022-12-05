@@ -4,6 +4,7 @@ import view.DatuakAldatuLeioa as dAL
 import view.HasieraLeioa as hL
 import view.ErabEzabatuLeioa as eEL
 import view.JokatuKargatuLeioa as jKL
+import view.RankingMenu as rM
 from controller.DatuBasea import datuBasea
 import view.PertsonalizazioLeioa as pL
 from PIL import ImageTk, Image
@@ -46,6 +47,9 @@ class MenuLeioa(object):
         buttonPertsonalizazioa = tk.Button(self.window, text="PERTSONALIZAZIOA", command=self.clickEgin6)
         buttonPertsonalizazioa.place(x=15, rely=0.70, width=180)
 
+        buttonPertsonalizazioa = tk.Button(self.window, text="RANKING/SARIAK", command=self.clickEgin7)
+        buttonPertsonalizazioa.place(x=90, rely=0.90, width=120)
+
         buttonItzuli = tk.Button(self.window, text="ITZULI", command=self.clickEgin4)
         buttonItzuli.place(x=10, rely=0.90, width=70)
         self.window.mainloop()
@@ -75,3 +79,7 @@ class MenuLeioa(object):
     def clickEgin6(self):
         self.window.destroy()
         pL.PertsonalizazioLeioa()
+
+    def clickEgin7(self):
+        self.window.destroy()
+        rM.RankingMenu()

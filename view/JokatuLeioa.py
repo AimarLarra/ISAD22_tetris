@@ -163,7 +163,6 @@ class TableroaPanela(tk.Frame):
 				db = datuBasea()
 				db.taulaSortuRanking()
 				id = db.getNextId(db.getUnekoa())
-				print(id)
 				if id[0] is None:
 					db.gordeRanking(db.getUnekoa(), str(1), str(self.zailtasuna), str(self.tab.puntuazioa))
 				else:
