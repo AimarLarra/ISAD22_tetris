@@ -6,16 +6,16 @@ from PIL import Image, ImageTk
 import view.RankingMenu as rM
 
 
-class RankingLeioa(object):
+class RankingGlobalaLeioa(object):
 
     def __init__(self):
-        super(RankingLeioa, self).__init__()
+        super(RankingGlobalaLeioa, self).__init__()
         self.window = tk.Tk()
         self.window.geometry('220x460')
         self.window.title("Tetris jokoa")
         self.window.config(bg="black")
         db = datuBasea()
-        datuak = db.getRankingPertsonala(db.getUnekoa())
+        datuak = db.getRankingGlobala()
 
         frame = tk.Frame(self.window, width=1, height=1, bg="black")
         frame.place(x=1, rely=0.01)

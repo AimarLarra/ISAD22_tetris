@@ -3,6 +3,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 import view.MenuLeioa as mL
 import view.RankingLeioa as rL
+import view.RankingGlobalaLeioa as rGL
 
 
 class RankingMenu(object):
@@ -32,7 +33,8 @@ class RankingMenu(object):
 
         def clickEgin2():
             self.window.destroy()
-            #MenuLeioa()
+            rGL.RankingGlobalaLeioa()
+
 
         buttonRankingGlobala = tk.Button(self.window, text="RANKING GLOBALA", command=clickEgin2)
         buttonRankingGlobala.place(x=15, rely=0.5, width=180)

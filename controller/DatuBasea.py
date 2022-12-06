@@ -315,7 +315,7 @@ class datuBasea:
     def getRankingPertsonala(self, erabiltzailea):
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
-        cur.execute("SELECT * FROM ranking WHERE erabiltzailea = '" + erabiltzailea + "' ORDER BY puntuazioa ASC")
+        cur.execute("SELECT * FROM ranking WHERE erabiltzailea = '" + erabiltzailea + "' ORDER BY puntuazioa DESC")
         datuak = cur.fetchall()
         con.commit()
         con.close()
@@ -324,7 +324,7 @@ class datuBasea:
     def getRankingGlobala(self):
         con = sqlite3.connect("tetrisJokoa.db")
         cur = con.cursor()
-        cur.execute("SELECT * FROM ranking ORDER BY puntuazioa ASC")
+        cur.execute("SELECT * FROM ranking ORDER BY puntuazioa DESC")
         datuak = cur.fetchall()
         con.commit()
         con.close()
