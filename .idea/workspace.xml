@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d9505f1-d0df-45bc-8db6-b4eb4e9859a2" name="Changes" comment="Datu baseen taula eta metodoak sortuta">
-      <change afterPath="$PROJECT_DIR$/view/RankingMenu.py" afterDir="false" />
+    <list default="true" id="1d9505f1-d0df-45bc-8db6-b4eb4e9859a2" name="Changes" comment="Partiden puntuazioa gordetzen da eta Rankingen menua sortuta">
+      <change afterPath="$PROJECT_DIR$/view/RankingLeioa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/JokatuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/JokatuLeioa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/MenuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/MenuLeioa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/RankingMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/RankingMenu.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670258769948</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Partiden puntuazioa gordetzen da eta Rankingen menua sortuta">
+      <created>1670261213536</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1670261213536</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -221,6 +227,7 @@
     <MESSAGE value="Admin, unekoa datu basean sartuta, datu base eguneratua, pertsonalizazioLeioa sartuta, implementatzea falta." />
     <MESSAGE value="Ya funciona bien lo de cargar partida :)" />
     <MESSAGE value="Datu baseen taula eta metodoak sortuta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Datu baseen taula eta metodoak sortuta" />
+    <MESSAGE value="Partiden puntuazioa gordetzen da eta Rankingen menua sortuta" />
+    <option name="LAST_COMMIT_MESSAGE" value="Partiden puntuazioa gordetzen da eta Rankingen menua sortuta" />
   </component>
 </project>

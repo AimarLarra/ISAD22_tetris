@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import *
-from tkinter import ttk
 from PIL import Image, ImageTk
 import view.MenuLeioa as mL
+import view.RankingLeioa as rL
 
 
 class RankingMenu(object):
@@ -25,7 +25,7 @@ class RankingMenu(object):
 
         def clickEgin1():
             self.window.destroy()
-            #MenuLeioa()
+            rL.RankingLeioa()
 
         buttonRankingPertsonala = tk.Button(self.window, text="RANKING PERTSONALA", command=clickEgin1)
         buttonRankingPertsonala.place(x=15, rely=0.25, width=180)
