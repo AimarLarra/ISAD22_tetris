@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 import view.MenuLeioa as mL
 import view.RankingLeioa as rL
 import view.RankingGlobalaLeioa as rGL
+import view.sariLeioa as sL
 
 
 class RankingMenu(object):
@@ -41,7 +42,7 @@ class RankingMenu(object):
 
         def clickEgin3():
             self.window.destroy()
-            #MenuLeioa()
+            sL.sariLeioa()
 
         buttonSariak = tk.Button(self.window, text="SARIAK", command=clickEgin3)
         buttonSariak.place(x=15, rely=0.75, width=180)

@@ -162,11 +162,27 @@ class TableroaPanela(tk.Frame):
 			except Exception as e:
 				db = datuBasea()
 				db.taulaSortuRanking()
-				id = db.getNextId(db.getUnekoa())
-				if id[0] is None:
-					db.gordeRanking(db.getUnekoa(), str(1), str(self.zailtasuna), str(self.tab.puntuazioa))
+				unekoa = db.getUnekoa()
+				partZenb = db.getNextId(db.getUnekoa())
+				if partZenb[0] is None:
+					db.gordeRanking(unekoa, str(1), str(self.zailtasuna), str(self.tab.puntuazioa))
 				else:
-					db.gordeRanking(db.getUnekoa(), str(id[0]+1), str(self.zailtasuna), str(self.tab.puntuazioa))
+					db.gordeRanking(unekoa, str(partZenb[0] + 1), str(self.zailtasuna), str(self.tab.puntuazioa))
+					partKop = db.getZenbatPartida(unekoa, str(self.zailtasuna))
+					print(partKop[0])
+					db.taulaSortuSaria()
+					if partKop[0] == 13:
+						db.gordeSaria("10 partidaJokatu", unekoa, str(self.zailtasuna))
+					elif partKop[0] == 100:
+						db.gordeSaria("100 partidaJokatu", unekoa, str(self.zailtasuna))
+					elif partKop[0] == 1000:
+						db.gordeSaria("1000 partidaJokatu", unekoa, str(self.zailtasuna))
+				if 10000 <= self.tab.puntuazioa < 100000:
+					db.gordeSaria("10000-ko puntuazioa", unekoa, "")
+				elif 100000 <= self.tab.puntuazioa < 1000000:
+					db.gordeSaria("100000-ko puntuazioa", unekoa, "")
+				elif 1000000 <= self.tab.puntuazioa:
+					db.gordeSaria("1000000-ko puntuazioa", unekoa, "")
 				print("GAMEOVER")
 				self.tab.hasieratu_tableroa()
 				return
