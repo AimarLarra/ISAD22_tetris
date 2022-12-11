@@ -36,7 +36,7 @@ class datuBasea:
     def taulaSortuSaria(self):
         con = sqlite3.connect("tetrisJokoa.db")
         con.execute(
-            "CREATE TABLE if not exists saria (saria varchar(20) NOT NULL, erabiltzailea varchar(20) NOT NULL, zailtasuna varchar(20), PRIMARY KEY(saria, erabiltzailea), FOREIGN KEY(erabiltzailea) REFERENCES erregistroa(erabiltzailea) ON DELETE CASCADE);")
+            "CREATE TABLE if not exists saria (saria varchar(20) NOT NULL, erabiltzailea varchar(20) NOT NULL, zailtasuna varchar(20), FOREIGN KEY(erabiltzailea) REFERENCES erregistroa(erabiltzailea) ON DELETE CASCADE);")
         con.commit()
         con.close()
 

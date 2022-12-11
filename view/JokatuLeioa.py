@@ -171,12 +171,10 @@ class TableroaPanela(tk.Frame):
 					partKop = db.getZenbatPartida(unekoa, str(self.zailtasuna))
 					print(partKop[0])
 					db.taulaSortuSaria()
-					if partKop[0] == 13:
+					if partKop[0] == 10:
 						db.gordeSaria("10 partidaJokatu", unekoa, str(self.zailtasuna))
 					elif partKop[0] == 100:
 						db.gordeSaria("100 partidaJokatu", unekoa, str(self.zailtasuna))
-					elif partKop[0] == 1000:
-						db.gordeSaria("1000 partidaJokatu", unekoa, str(self.zailtasuna))
 				if 10000 <= self.tab.puntuazioa < 100000:
 					db.gordeSaria("10000-ko puntuazioa", unekoa, "")
 				elif 100000 <= self.tab.puntuazioa < 1000000:

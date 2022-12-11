@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d9505f1-d0df-45bc-8db6-b4eb4e9859a2" name="Changes" comment="Ranking amaituta, diseinua aldatu.">
-      <change afterPath="$PROJECT_DIR$/media/MedallaBronce.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/MedallaOro.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/MedallaPlata.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/trofeo1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/sariLeioa.py" afterDir="false" />
+    <list default="true" id="1d9505f1-d0df-45bc-8db6-b4eb4e9859a2" name="Changes" comment="Amaituta, sariLeioa aldatu behar da.">
+      <change afterPath="$PROJECT_DIR$/media/MedallaE1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/MedallaE2-removebg-preview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/trofeoEB-removebg-preview.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/DatuBasea.py" beforeDir="false" afterPath="$PROJECT_DIR$/controller/DatuBasea.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/MedallaBronce.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/MedallaPlata.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/trofeo1.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/view/JokatuLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/JokatuLeioa.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/RankingMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/RankingMenu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/sariLeioa.py" beforeDir="false" afterPath="$PROJECT_DIR$/view/sariLeioa.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670318475845</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Amaituta, sariLeioa aldatu behar da.">
+      <created>1670675592908</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1670675592908</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -253,6 +261,7 @@
     <MESSAGE value="Datu baseen taula eta metodoak sortuta" />
     <MESSAGE value="Partiden puntuazioa gordetzen da eta Rankingen menua sortuta" />
     <MESSAGE value="Ranking amaituta, diseinua aldatu." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ranking amaituta, diseinua aldatu." />
+    <MESSAGE value="Amaituta, sariLeioa aldatu behar da." />
+    <option name="LAST_COMMIT_MESSAGE" value="Amaituta, sariLeioa aldatu behar da." />
   </component>
 </project>
