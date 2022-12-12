@@ -33,8 +33,14 @@ class JokatuKargatuLeioa(object):
 
     def clickEgin2(self):
         db = datuBasea()
+        db.taulaSortuPartida()
         zailtasuna = db.getZailtasuna(db.getUnekoa())
         tam0 = db.getTamaina0(db.getUnekoa())
         tam1 = db.getTamaina1(db.getUnekoa())
+        partida = db.partidaKargatu(db.getUnekoa())
+        print(partida)
         self.window.destroy()
-        jL.JokatuLeioa(zailtasuna[0], True, (tam0[0], tam1[0]))
+        if partida is not None:
+            jL.JokatuLeioa(zailtasuna[0], True, (tam0[0], tam1[0]))
+        else:
+            jL.JokatuLeioa(1, False, (10, 20))
